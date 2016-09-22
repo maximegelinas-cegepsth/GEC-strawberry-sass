@@ -3,6 +3,6 @@
 @Component({
     moduleId: module.id,
     selector: 'app-about',
-    template: '<h1>About</h1>'
+    templateUrl: 'AboutComponent.html'
 })
 export class AboutComponent { }

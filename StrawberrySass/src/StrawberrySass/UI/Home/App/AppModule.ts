@@ -10,7 +10,6 @@ import { MdToolbarModule } from '@angular2-material/toolbar';
 
 import { LayoutComponent } from '../../Shared/Layout';
 
-import { AboutComponent } from './AboutComponent';
 import { routing } from './AppRouting';
 import { ContactUsComponent } from './ContactUsComponent';
 import { WelcomeComponent } from './WelcomeComponent';
@@ -31,7 +30,6 @@ import { WelcomeComponent } from './WelcomeComponent';
     declarations: [
         LayoutComponent,
 
-        AboutComponent,
         ContactUsComponent,
         WelcomeComponent
     ],
