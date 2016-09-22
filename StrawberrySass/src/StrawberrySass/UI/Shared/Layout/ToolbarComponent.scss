@@ -7,19 +7,23 @@
 
 @include new-component(
     $name: 'app-toolbar',
-    $selector: '.app-toolbar',
+    $selector: ':host',
     $declarations: (
         'background-color': get-color('primary'),
         'color': get-color('foreground', 'light')
         )
     ) {
     @include dynamic {
-        background-color: get('background-color');
-        color: get('color')
+        .#{this('name')} {
+            background-color: get('background-color');
+            color: get('color')
+        }
     }
     @include static {
-        .app-menu-btn {
-            margin-right: 10px;
+        .#{this('name')} {
+            .app-menu-btn {
+                margin-right: 10px;
+            }
         }
     }
 }

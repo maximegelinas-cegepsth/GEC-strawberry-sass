@@ -7,7 +7,7 @@
 
 @include new-component(
     $name: 'app-sidenav',
-    $selector: '.app-sidenav',
+    $selector: ':host',
     $declarations: (
         'background-color': get-color('secondary'),
         'link': (
@@ -21,22 +21,23 @@
         )
     ) {
     @include dynamic {
-        background-color: get('background-color');
-        width: get('width');
-        .app-nav {
-            .app-nav-link {
-                & /deep/ * {
-                    color: get('link:color');
-                }
-                &.active {
+        .#{this('name')} {
+            background-color: get('background-color');
+            width: get('width');
+            .app-nav {
+                .app-nav-link {
                     & /deep/ * {
-                        background-color: get('link:active:background-color');
-                        color: get('link:active:color');
+                        color: get('link:color');
+                    }
+                    &.active {
+                        & /deep/ * {
+                            background-color: get('link:active:background-color');
+                            color: get('link:active:color');
+                        }
                     }
                 }
             }
-        }
+        }        
     }
-    @include static {
-    }
+    @include static { }
 }
