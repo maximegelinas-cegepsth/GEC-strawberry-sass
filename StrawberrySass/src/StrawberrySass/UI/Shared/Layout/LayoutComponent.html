@@ -1,5 +1,5 @@
 ﻿<!-- == Toolbar == -->
-<md-toolbar >
+<md-toolbar>
     <div #toolbar style="height: 200px"></div>
     <button #menuBtn
             md-icon-button
@@ -18,7 +18,10 @@
     <md-sidenav #sidenav
                 mode="side"
                 opened="true">
-        Sidenav
+        <md-nav-list>
+            <a md-list-item routerLink="/about">À propos</a>
+            <a md-list-item routerLink="/contact-us">Nous joindre</a>
+        </md-nav-list>
     </md-sidenav>
 
     <!-- == Content == -->
