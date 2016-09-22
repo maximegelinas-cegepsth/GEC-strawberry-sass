@@ -1,1 +1,22 @@
-﻿
+﻿/// <reference path="../../../../node_modules/strawberry/src/strawberry" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-about',
+    $selector: ':host',
+    $declarations: (
+        'font': get-font('primary'),
+        )
+    ) {
+    @include dynamic {
+    }
+    @include static {
+        section > * {
+            text-align: center
+        }
+    }
+}
