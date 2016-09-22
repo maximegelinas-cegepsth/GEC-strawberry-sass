@@ -5,4 +5,9 @@
     selector: 'app-layout',
     templateUrl: 'LayoutComponent.html'
 })
-export class LayoutComponent { }
+export class LayoutComponent {
+
+    // TODO(maximegelinas): Gets the toolbar height dynamically.
+    toolbarHeight = '64px';
+
+}
