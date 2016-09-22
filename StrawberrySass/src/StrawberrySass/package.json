@@ -24,9 +24,17 @@
   },
   "scripts": {
     "postinstall": "npm run typings",
-    "build": "tsc -p ./tsconfig.json", 
+    "build": "cpx \"./UI/**/*.{html,png,jpg}\" ./wwwroot && tsc -p ./tsconfig.json",
+    "build:watch": "concurrently \"cpx \"./UI/**/*.{html,png,jpg}\" ./wwwroot -w\" \"tsc -p ./tsconfig.json -w\"",
     "clean": "rimraf ./wwwroot",
-    "typings": "typings install"
+    "typings": "typings install",
+    "vendor": "npm run vendor:angular && npm run vendor:core-js && npm run vendor:zone.js && npm run vendor:reflect-metadata && npm run vendor:systemjs && npm run vendor:rxjs",
+    "vendor:angular": "cpx \"./node_modules/@angular/*/bundles/*.min.js\" ./wwwroot/Vendor/@angular",
+    "vendor:core-js": "cpx \"./node_modules/core-js/client/shim.min.js\" ./wwwroot/Vendor/core-js/client",
+    "vendor:zone.js": "cpx \"./node_modules/zone.js/dist/zone.min.js\" ./wwwroot/Vendor/zone.js/dist",
+    "vendor:reflect-metadata": "cpx \"./node_modules/reflect-metadata/Reflect.js\" ./wwwroot/Vendor/reflect-metadata",
+    "vendor:systemjs": "cpx \"./node_modules/systemjs/dist/system.src.js\" ./wwwroot/Vendor/systemjs/dist",
+    "vendor:rxjs": "cpx \"./node_modules/rxjs/**/*.js\" ./wwwroot/Vendor/rxjs"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
@@ -37,6 +45,7 @@
     "@angular/platform-browser": "2.0.0",
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
+    "@angular2-material/core": "^2.0.0-alpha.8-2",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
@@ -44,6 +53,7 @@
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
+    "cpx": "^1.5.0",
     "concurrently": "^2.2.0",
     "rimraf": "^2.5.4",
     "typescript": "^2.0.2",

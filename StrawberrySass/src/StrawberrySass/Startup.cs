@@ -101,11 +101,19 @@ namespace StrawberrySass
 
             app.UseIdentity();
 
+            // == Routes ==
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                // Allows Angular to render his routes.
+                routes.MapRoute(
+                    name: "spa-fallback",
+                    template: "{controller}/{*anyting}",
+                    defaults: new {action = "Index"});
             });
         }
     }

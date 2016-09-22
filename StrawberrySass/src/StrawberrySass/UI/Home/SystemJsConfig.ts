@@ -1,7 +1,7 @@
 ﻿((global: any) => {
 
     const paths: { [name: string]: string } = {
-        'vendor:': 'Vendor/'
+        'vendor:': '/Vendor/'
     };
 
     const map: { [path: string]: string } = {
@@ -14,14 +14,14 @@
         // == App ==
         'app': { main: 'Main' },
         // == Angular ==
-        '@angular/core': { main: 'bundles/core.umd' },
-        '@angular/common': { main: 'bundles/common.umd' },
-        '@angular/compiler': { main: 'bundles/compiler.umd' },
-        '@angular/platform-browser': { main: 'bundles/platform-browser.umd' },
-        '@angular/platform-browser-dynamic': { main: 'bundles/platform-browser-dynamic.umd' },
-        '@angular/http': { main: 'bundles/http.umd' },
-        '@angular/router': { main: 'bundles/router.umd' },
-        '@angular/forms': { main: 'bundles/forms.umd' },
+        '@angular/core': { main: 'bundles/core.umd.min' },
+        '@angular/common': { main: 'bundles/common.umd.min' },
+        '@angular/compiler': { main: 'bundles/compiler.umd.min' },
+        '@angular/platform-browser': { main: 'bundles/platform-browser.umd.min' },
+        '@angular/platform-browser-dynamic': { main: 'bundles/platform-browser-dynamic.umd.min' },
+        '@angular/http': { main: 'bundles/http.umd.min' },
+        '@angular/router': { main: 'bundles/router.umd.min' },
+        '@angular/forms': { main: 'bundles/forms.umd.min' },
         // == RxJS ==
         'rxjs': {}
     };

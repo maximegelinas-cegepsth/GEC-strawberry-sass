@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - StrawberrySass</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="https://cdn.rawgit.com/strawberrysass/strawberry-branding/master/favicons/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="https://cdn.rawgit.com/strawberrysass/strawberry-branding/master/favicons/favicon.ico" type="image/x-icon" />
 
     @RenderSection("styles", required: false)
 </head>
@@ -14,7 +14,16 @@
 <body>
     @RenderBody()
 
+    <script src="/Vendor/zone.js/dist/zone.min.js"></script>
+    <script src="/Vendor/reflect-metadata/Reflect.js"></script>
+    <script src="/Vendor/systemjs/dist/system.src.js"></script>
+
     @RenderSection("scripts", required: false)
+
+    <script src="SystemJsConfig.js"></script>
+    <script>
+        System.import('app').catch(function (err) { console.error(err); });
+    </script>
 </body>
 
 </html>
