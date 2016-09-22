@@ -21,7 +21,7 @@
         )
     ) {
     @include dynamic {
-        .#{this('name')} {
+        .app-sidenav {
             background-color: get('background-color');
             width: get('width');
             .app-nav {

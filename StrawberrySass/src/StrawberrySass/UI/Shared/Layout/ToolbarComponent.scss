@@ -14,13 +14,13 @@
         )
     ) {
     @include dynamic {
-        .#{this('name')} {
+        .app-toolbar {
             background-color: get('background-color');
             color: get('color')
         }
     }
     @include static {
-        .#{this('name')} {
+        .app-toolbar {
             .app-menu-btn {
                 margin-right: 10px;
             }
