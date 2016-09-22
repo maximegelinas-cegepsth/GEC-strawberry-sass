@@ -1,0 +1,21 @@
+﻿/// <reference path="../../../node_modules/strawberry/src/strawberry" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-body',
+    $selector: '.app-body',
+    $declarations: (
+        'font': get-font('primary'),
+        )
+    ) {
+    @include dynamic {
+        font: get('font');
+    }
+    @include static {
+        margin: 0;
+    }
+}

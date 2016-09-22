@@ -34,3 +34,12 @@
     $name: 'background',
     $code: #fff
     );
+
+// =====
+// Fonts
+// =====
+
+@include font(
+    $name: 'primary',
+    $family: 'Roboto, sans-serif'
+    );
