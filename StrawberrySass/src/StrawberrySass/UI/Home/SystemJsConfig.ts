@@ -27,6 +27,7 @@
         // == Angular Material ==
         '@angular2-material/core': { main: 'core.umd' },
         '@angular2-material/button': { main: 'button.umd' },
+        '@angular2-material/icon': { main: 'icon.umd' },
         '@angular2-material/toolbar': { main: 'toolbar.umd' },
         // == RxJS ==
         'rxjs': {}

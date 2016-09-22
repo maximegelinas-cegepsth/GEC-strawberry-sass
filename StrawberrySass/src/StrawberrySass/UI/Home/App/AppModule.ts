@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MdButtonModule } from '@angular2-material/button';
 import { MdCoreModule } from '@angular2-material/core';
+import { MdIconModule } from '@angular2-material/icon';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 
 import { LayoutComponent } from '../../Shared/Layout';
@@ -18,6 +19,7 @@ import { WelcomeComponent } from './WelcomeComponent';
 
         MdButtonModule.forRoot(),
         MdCoreModule.forRoot(),
+        MdIconModule.forRoot(),
         MdToolbarModule.forRoot(),
 
         routing
