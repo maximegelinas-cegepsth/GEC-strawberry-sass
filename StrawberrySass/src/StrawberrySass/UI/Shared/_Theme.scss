@@ -1,0 +1,36 @@
+﻿/// <reference path="../../node_modules/strawberry/src/strawberry" />
+
+
+// ======
+// Colors
+// ======
+
+@include color(
+    $name: 'primary',
+    $code: #b71c1c
+    );
+
+@include color(
+    $name: 'secondary',
+    $code: #263238
+    );
+
+@include color(
+    $name: 'accent',
+    $code: #b2ff59
+    );
+
+@include color(
+    $name: 'foreground',
+    $code: rgba(#000, .87)
+    ) {
+    @include color-variant(
+        $name: 'light',
+        $code: #fff
+        );
+}
+
+@include color(
+    $name: 'background',
+    $code: #fff
+    );
