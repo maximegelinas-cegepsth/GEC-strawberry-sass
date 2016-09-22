@@ -7,6 +7,7 @@
     const map: { [path: string]: string } = {
         'app': 'App',
         '@angular': 'vendor:@angular',
+        '@angular2-material': 'vendor:@angular2-material',
         'rxjs': 'vendor:rxjs'
     };
 
@@ -22,6 +23,10 @@
         '@angular/http': { main: 'bundles/http.umd.min' },
         '@angular/router': { main: 'bundles/router.umd.min' },
         '@angular/forms': { main: 'bundles/forms.umd.min' },
+        // == Angular Material ==
+        '@angular2-material/core': { main: 'core.umd' },
+        '@angular2-material/button': { main: 'button.umd' },
+        '@angular2-material/toolbar': { main: 'toolbar.umd' },
         // == RxJS ==
         'rxjs': {}
     };
