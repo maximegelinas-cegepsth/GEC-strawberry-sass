@@ -1,0 +1,42 @@
+﻿/// <reference path="../../../node_modules/strawberry/src/strawberry" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-sidenav',
+    $selector: '.app-sidenav',
+    $declarations: (
+        'background-color': get-color('secondary'),
+        'link': (
+            'color': get-color('foreground', 'light'),
+            'active': (
+                'background-color': get-color('accent'),
+                'color': get-color('foreground')
+                )
+            ),
+        'width': 15%
+        )
+    ) {
+    @include dynamic {
+        background-color: get('background-color');
+        width: get('width');
+        .app-nav {
+            .app-nav-link {
+                & /deep/ * {
+                    color: get('link:color');
+                }
+                &.active {
+                    & /deep/ * {
+                        background-color: get('link:active:background-color');
+                        color: get('link:active:color');
+                    }
+                }
+            }
+        }
+    }
+    @include static {
+    }
+}

@@ -1,0 +1,25 @@
+﻿/// <reference path="../../../node_modules/strawberry/src/strawberry" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-toolbar',
+    $selector: '.app-toolbar',
+    $declarations: (
+        'background-color': get-color('primary'),
+        'color': get-color('foreground', 'light')
+        )
+    ) {
+    @include dynamic {
+        background-color: get('background-color');
+        color: get('color')
+    }
+    @include static {
+        .app-menu-btn {
+            margin-right: 10px;
+        }
+    }
+}

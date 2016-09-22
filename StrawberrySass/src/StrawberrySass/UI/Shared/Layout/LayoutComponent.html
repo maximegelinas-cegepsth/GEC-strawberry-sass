@@ -1,7 +1,7 @@
 ﻿<!-- == Toolbar == -->
-<md-toolbar>
-    <div #toolbar style="height: 200px"></div>
-    <button #menuBtn
+<md-toolbar class="app-toolbar">
+    <button class="app-menu-btn"
+            #menuBtn
             md-icon-button
             (click)="sidenav.toggle()">
         <md-icon>menu</md-icon>
@@ -15,13 +15,21 @@
                    [style.top]="toolbarHeight">
 
     <!-- == Sidenav == -->
-    <md-sidenav #sidenav
+    <md-sidenav class="app-sidenav"
+                #sidenav
                 mode="side"
                 opened="true">
-        <md-nav-list>
-            <a md-list-item routerLink="/about">À propos</a>
-            <a md-list-item routerLink="/contact-us">Nous joindre</a>
+
+        <md-nav-list class="app-nav">
+            <a class="app-nav-link"
+               *ngFor="let link of links"
+               md-list-item
+               [routerLink]="link.url"
+               routerLinkActive="active">
+                {{ link.text }}
+            </a>
         </md-nav-list>
+
     </md-sidenav>
 
     <!-- == Content == -->
