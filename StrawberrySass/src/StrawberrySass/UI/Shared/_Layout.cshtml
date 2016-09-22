@@ -7,14 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://cdn.rawgit.com/strawberrysass/strawberry-branding/master/favicons/favicon.ico" type="image/x-icon" />
-    
+
     <link href="https://npmcdn.com/@@angular2-material/core@@latest/overlay/overlay.css" rel="stylesheet">
 
     @RenderSection("styles", required: false)
 </head>
 
 <body>
-    @RenderBody()
+    <app-layout>
+        @RenderBody()
+    </app-layout>
 
     <script src="/Vendor/zone.js/dist/zone.min.js"></script>
     <script src="/Vendor/reflect-metadata/Reflect.js"></script>
