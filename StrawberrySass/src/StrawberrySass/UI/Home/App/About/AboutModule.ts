@@ -2,6 +2,7 @@
 import { CommonModule }   from '@angular/common';
 
 import { MdButtonModule } from '@angular2-material/button';
+import { MdCardModule } from '@angular2-material/card';
 import { MdIconModule } from '@angular2-material/icon';
 import { MdListModule } from '@angular2-material/list';
 
@@ -13,6 +14,7 @@ import { routing } from './AboutRouting';
         CommonModule,    
 
         MdButtonModule.forRoot(),
+        MdCardModule.forRoot(),
         MdIconModule.forRoot(),
         MdListModule.forRoot(),
 
