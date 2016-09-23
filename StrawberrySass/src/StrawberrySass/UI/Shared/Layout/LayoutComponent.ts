@@ -6,7 +6,8 @@
     templateUrl: 'LayoutComponent.html',
     styleUrls: [
         'ToolbarComponent.css',
-        'SidenavComponent.css'
+        'SidenavComponent.css',
+        'FooterComponent.css'
     ]
 })
 export class LayoutComponent {

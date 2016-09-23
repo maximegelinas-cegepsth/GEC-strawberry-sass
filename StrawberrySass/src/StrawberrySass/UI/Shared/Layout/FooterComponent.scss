@@ -6,24 +6,23 @@
 @import 'Theme';
 
 @include new-component(
-    $name: 'app-toolbar',
+    $name: 'app-footer',
     $selector: ':host',
     $declarations: (
-        'background-color': get-color('primary'),
+        'background-color': get-color('secondary'),
         'color': get-color('foreground', 'light')
         )
     ) {
     @include dynamic {
-        .app-toolbar {
+        .app-footer {
             background-color: get('background-color');
             color: get('color');
+            padding: 15px 0;
         }
     }
-    @include static {
-        .app-toolbar {
-            .app-menu-btn {
-                margin-right: 10px;
-            }
+    @include static { 
+        .app-footer {
+            text-align: center;
         }
     }
 }
