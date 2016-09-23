@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AspNetCoreAngular2WebpackApp.UI.Home
+namespace StrawberrySass.UI.Home
 {
     public class HomeController : Controller
     {
