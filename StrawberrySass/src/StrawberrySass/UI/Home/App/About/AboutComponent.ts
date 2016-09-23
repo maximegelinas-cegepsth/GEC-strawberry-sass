@@ -3,7 +3,7 @@
 @Component({
     moduleId: module.id,
     selector: 'app-about',
-    templateUrl: 'AboutComponent.html',
+    templateUrl: '/template/home/about',
     styleUrls: ['AboutComponent.css']
 })
 export class AboutComponent { }
