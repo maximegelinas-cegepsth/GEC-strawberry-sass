@@ -11,8 +11,8 @@ namespace StrawberrySass.UI
         {
             return new[]
             {
-                "/UI/{1}/{0}.cshtml",
-                "/UI/Shared/{0}.cshtml"
+                "~/UI/{1}/{0}.cshtml",
+                "~/UI/Shared/{0}.cshtml"
             };
         }
     }
