@@ -13,10 +13,35 @@
         )
     ) {
     @include dynamic {
+        section {
+            margin: 75px 0;
+        }
+        .app-contributor {
+            text-align: left;
+            & /deep/ > * {
+                height: 200px;
+            }
+            .app-contributor-photo {
+                height: 200px;
+                min-width: 200px;
+            }
+            .app-contributor-name {
+                font-size: 1.5rem;
+            }
+        }        
     }
     @include static {
         section > * {
             text-align: center
+        }
+        .app-contributor-name,
+        .app-contributor-bio {
+            margin-bottom: 10px;
+        }
+        .app-contributor-name,
+        .app-contributor-bio,
+        .app-contributor-links {
+            margin-left: 15px;
         }
     }
 }
