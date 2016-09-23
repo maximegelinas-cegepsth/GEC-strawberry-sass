@@ -3,6 +3,7 @@
 @Component({
     moduleId: module.id,
     selector: 'app-contact-us',
-    template: '<h1>Contact us</h1>'
+    templateUrl: 'ContactUsComponent.html',
+    styleUrls: ['ContactUsComponent.css']
 })
 export class ContactUsComponent { }
