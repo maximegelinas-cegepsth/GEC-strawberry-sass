@@ -11,8 +11,6 @@ import { MdToolbarModule } from '@angular2-material/toolbar';
 import { LayoutComponent } from '../../Shared/Layout';
 
 import { routing } from './AppRouting';
-import { ContactUsComponent } from './ContactUsComponent';
-import { WelcomeComponent } from './WelcomeComponent';
 
 @NgModule({
     imports: [
@@ -28,10 +26,7 @@ import { WelcomeComponent } from './WelcomeComponent';
         routing
     ],
     declarations: [
-        LayoutComponent,
-
-        ContactUsComponent,
-        WelcomeComponent
+        LayoutComponent
     ],
     bootstrap: [LayoutComponent]
 })
