@@ -7,8 +7,13 @@
 
 @include color(
     $name: 'primary',
-    $code: #b71c1c
-    );
+    $code: #be1931
+    ) {
+    @include color-variant(
+        $name: 'light',
+        $code: #f4abba
+        );
+}
 
 @include color(
     $name: 'secondary',
@@ -17,7 +22,7 @@
 
 @include color(
     $name: 'accent',
-    $code: #b2ff59
+    $code: #77b255
     );
 
 @include color(
