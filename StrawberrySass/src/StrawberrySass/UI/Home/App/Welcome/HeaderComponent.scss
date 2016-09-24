@@ -1,0 +1,41 @@
+﻿/// <reference path="../../../../node_modules/strawberry/src/strawberry" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-header',
+    $selector: ':host',
+    $declarations: (
+        'background-color': get-color('primary', 'light')
+        )
+    ) {
+    @include dynamic { 
+        .app-header {
+            background-color: get('background-color');
+            .app-header-content {
+                height: 75%;                
+            }
+        }
+    }
+    @include static {
+        text-align: center;
+        .app-header {
+            height: 100vh;
+            margin: 0 -32px;
+            position: relative;
+            .app-header-content {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: auto;
+                .app-logo {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

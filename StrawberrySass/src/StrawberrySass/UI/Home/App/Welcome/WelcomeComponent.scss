@@ -8,15 +8,31 @@
 @include new-component(
     $name: 'app-welcome',
     $selector: ':host',
-    $declarations: (
-        'font': get-font('primary'),
-        )
+    $declarations: ('null':'null')
     ) {
-    @include dynamic { }
-    @include static { 
-        header {
-            height: 200px;
-            text-align: center;
+    @include dynamic {}
+    @include static {
+        section {
+            margin: 18vh 0;
+            &:first-child {
+                margin-bottom: 30vh;
+            }
+        }
+        .app-feature {
+            .app-feature-img {
+                height: auto;
+                width: 100%;
+            }
+            .app-feature-txt {
+                &.app-left {
+                    padding-left: 15px;
+                    text-align: left;
+                }
+                &.app-right {
+                    padding-right: 15px;
+                    text-align: right;
+                }
+            }
         }
     }
 }

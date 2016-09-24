@@ -8,16 +8,14 @@
 @include new-component(
     $name: 'app-about',
     $selector: ':host',
-    $declarations: (
-        'font': get-font('primary'),
-        )
+    $declarations: ('null':'null')
     ) {
     @include dynamic {
         section {
-            margin: 75px 0;
+            margin: 18vh 0;
         }
         .app-contributors {
-            margin-top: 50px;
+            margin-top: 15vh;
         }
         .app-contributor {
             .app-contributor-photo {
@@ -26,8 +24,6 @@
         }        
     }
     @include static {
-        section > * {
-            text-align: center
-        }
+        text-align: center
     }
 }
