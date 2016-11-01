@@ -17,7 +17,7 @@
   "contributors": [
     "Maxime Glinas <maxime.gelinas@idmobiles.com>"
   ],
-  "main": "Program.cs",
+  "main": "./Program.cs",
   "repository": {
     "type": "git",
     "url": ""
@@ -29,15 +29,15 @@
     "clean": "rimraf ./wwwroot",
     "typings": "typings install",
     "vendor": "npm run vendor:angular && npm run vendor:angular-material && npm run vendor:core-js && npm run vendor:hammerjs && npm run vendor:flexboxgrid && npm run vendor:reflect-metadata && npm run vendor:rxjs && npm run vendor:systemjs && npm run vendor:zone.js",
-    "vendor:angular": "cpx \"./node_modules/@angular/*/{bundles/*.min.js,}\" ./wwwroot/Vendor/@angular",
-    "vendor:angular-material": "cpx \"./node_modules/@angular/material/*{.umd.js,core/overlay/overlay.css}\" ./wwwroot/Vendor/@angular/material",
-    "vendor:core-js": "cpx \"./node_modules/core-js/client/shim.min.js\" ./wwwroot/Vendor/core-js/client",
-    "vendor:flexboxgrid": "cpx \"./node_modules/flexboxgrid/dist/*.min.css\" ./wwwroot/Vendor/flexboxgrid/dist",
-    "vendor:hammerjs": "cpx \"./node_modules/hammerjs/hammer.min.js\" ./wwwroot/Vendor/hammerjs",
-    "vendor:reflect-metadata": "cpx \"./node_modules/reflect-metadata/Reflect.js\" ./wwwroot/Vendor/reflect-metadata",
-    "vendor:rxjs": "cpx \"./node_modules/rxjs/**/*.js\" ./wwwroot/Vendor/rxjs",
-    "vendor:systemjs": "cpx \"./node_modules/systemjs/dist/system.src.js\" ./wwwroot/Vendor/systemjs/dist",
-    "vendor:zone.js": "cpx \"./node_modules/zone.js/dist/zone.min.js\" ./wwwroot/Vendor/zone.js/dist"
+    "vendor:angular": "cpx \"./node_modules/@angular/*/{bundles/*.min.js,}\" ./wwwroot/Shared/Vendor/@angular",
+    "vendor:angular-material": "cpx \"./node_modules/@angular/material/*{.umd.js,core/overlay/overlay.css}\" ./wwwroot/Shared/Vendor/@angular/material",
+    "vendor:core-js": "cpx \"./node_modules/core-js/client/shim.min.js\" ./wwwroot/Shared/Vendor/core-js/client",
+    "vendor:flexboxgrid": "cpx \"./node_modules/flexboxgrid/dist/*.min.css\" ./wwwroot/Shared/Vendor/flexboxgrid/dist",
+    "vendor:hammerjs": "cpx \"./node_modules/hammerjs/hammer.min.js\" ./wwwroot/Shared/Vendor/hammerjs",
+    "vendor:reflect-metadata": "cpx \"./node_modules/reflect-metadata/Reflect.js\" ./wwwroot/Shared/Vendor/reflect-metadata",
+    "vendor:rxjs": "cpx \"./node_modules/rxjs/**/*.js\" ./wwwroot/Shared/Vendor/rxjs",
+    "vendor:systemjs": "cpx \"./node_modules/systemjs/dist/system.src.js\" ./wwwroot/Shared/Vendor/systemjs/dist",
+    "vendor:zone.js": "cpx \"./node_modules/zone.js/dist/zone.min.js\" ./wwwroot/Shared/Vendor/zone.js/dist"
   },
   "dependencies": {
     "@angular/common": "2.0.0",

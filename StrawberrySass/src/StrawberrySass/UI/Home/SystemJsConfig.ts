@@ -2,7 +2,7 @@
 
     const paths: { [name: string]: string } = {
         'shared:': '/Shared/App/',
-        'vendor:': '/Vendor/'
+        'vendor:': '/Shared/Vendor/'
     };
 
     const map: { [path: string]: string } = {
