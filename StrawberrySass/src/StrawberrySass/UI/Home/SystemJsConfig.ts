@@ -14,7 +14,7 @@
     const packages: { [pkg: string]: Object } = {
         // == App ==
         'app': { main: 'Main' },
-        '/Shared/Layout': { main: 'Index' },
+        '/Shared/App/Layout': { main: 'Index' },
         // == Angular ==
         '@angular/core': { main: 'bundles/core.umd.min' },
         '@angular/common': { main: 'bundles/common.umd.min' },

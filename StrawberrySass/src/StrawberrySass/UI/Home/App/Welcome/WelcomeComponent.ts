@@ -3,7 +3,7 @@
 @Component({
     moduleId: module.id,
     selector: 'app-welcome',
-    templateUrl: '/template/home/welcome',
+    templateUrl: '/templates/home/welcome',
     styleUrls: [
         'HeaderComponent.css',
         'WelcomeComponent.css'

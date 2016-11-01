@@ -15,7 +15,8 @@ export class LayoutComponent {
     links: {}[] = [
         { url: '/welcome', text: 'Accueil' },
         { url: '/about', text: 'À propos' },
-        { url: '/contact-us', text: 'Nous joindre' }
+        { url: '/contact-us', text: 'Nous joindre' },
+        { url: '/members', text: 'Membres' }
     ];
 
     // TODO(maximegelinas): Gets the toolbar height dynamically.

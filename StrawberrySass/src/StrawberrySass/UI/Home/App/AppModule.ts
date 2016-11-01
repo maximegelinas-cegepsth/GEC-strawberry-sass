@@ -8,7 +8,7 @@ import { MdListModule } from '@angular2-material/list';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 
-import { LayoutComponent } from '../../Shared/Layout';
+import { LayoutComponent } from '../../Shared/App/Layout';
 
 import { routing } from './AppRouting';
 

@@ -4,7 +4,7 @@ namespace StrawberrySass.UI.Home.App.Welcome
 {
     public class WelcomeController : Controller
     {
-        [Route("template/home/welcome")]
+        [Route("templates/home/welcome")]
         public IActionResult WelcomeComponent() => PartialView("~/UI/Home/App/Welcome/WelcomeComponent.cshtml");
     }
 }
