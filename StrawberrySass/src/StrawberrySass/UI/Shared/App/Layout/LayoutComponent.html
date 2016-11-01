@@ -1,14 +1,9 @@
 ﻿<!-- == Toolbar == -->
 <md-toolbar class="app-toolbar">
-    <button class="app-menu-btn"
-            #menuBtn
-            md-icon-button
-            (click)="sidenav.toggle()">
-        <md-icon>menu</md-icon>
-    </button>
+    <md-icon class="app-menu-btn"
+             (click)="sidenav.toggle()">menu</md-icon>
 
-    <button routerLink="/welcome" md-button>STRAWBERRYSASS</button>
-
+    <span routerLink="/welcome">STRAWBERRYSASS</span>
 </md-toolbar>
 
 <md-sidenav-layout fullscreen

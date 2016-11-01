@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../node_modules/strawberry/src/strawberry" />
+﻿/// <reference path="../../Assets/Styles/References" />
 
 
 @import 'strawberry/core';
@@ -22,6 +22,7 @@
     @include static {
         .app-toolbar {
             .app-menu-btn {
+                cursor: pointer;
                 margin-right: 10px;
             }
         }

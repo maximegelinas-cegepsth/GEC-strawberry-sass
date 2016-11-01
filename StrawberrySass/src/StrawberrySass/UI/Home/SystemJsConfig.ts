@@ -1,6 +1,7 @@
 ﻿((global: any) => {
 
     const paths: { [name: string]: string } = {
+        'shared:': '/Shared/App/',
         'vendor:': '/Vendor/'
     };
 
@@ -14,7 +15,8 @@
     const packages: { [pkg: string]: Object } = {
         // == App ==
         'app': { main: 'Main' },
-        '/Shared/App/Layout': { main: 'Index' },
+        'shared:Common': { main: 'Index' },
+        'shared:Layout': { main: 'Index' },
         // == Angular ==
         '@angular/core': { main: 'bundles/core.umd.min' },
         '@angular/common': { main: 'bundles/common.umd.min' },
@@ -24,7 +26,7 @@
         '@angular/http': { main: 'bundles/http.umd.min' },
         '@angular/router': { main: 'bundles/router.umd.min' },
         '@angular/forms': { main: 'bundles/forms.umd.min' },
-        '@angular/material': { main: 'material.umd.min' },
+        '@angular/material': { main: 'material.umd' },
         // == RxJS ==
         'rxjs': {}
     };

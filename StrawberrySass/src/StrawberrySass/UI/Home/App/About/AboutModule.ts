@@ -1,10 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
-import { CommonModule }   from '@angular/common';
 
-import { MdButtonModule } from '@angular2-material/button';
-import { MdCardModule } from '@angular2-material/card';
-import { MdIconModule } from '@angular2-material/icon';
-import { MdListModule } from '@angular2-material/list';
+import { CommonModule } from '../../../Shared/App/Common';
 
 import { AboutComponent } from './AboutComponent';
 import { routing } from './AboutRouting';
@@ -12,11 +8,6 @@ import { routing } from './AboutRouting';
 @NgModule({
     imports: [
         CommonModule,    
-
-        MdButtonModule.forRoot(),
-        MdCardModule.forRoot(),
-        MdIconModule.forRoot(),
-        MdListModule.forRoot(),
 
         routing
     ],

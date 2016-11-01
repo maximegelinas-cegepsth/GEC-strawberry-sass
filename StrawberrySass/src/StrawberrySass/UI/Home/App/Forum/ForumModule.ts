@@ -1,5 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
-import { CommonModule }   from '@angular/common';
+
+import { CommonModule } from '../../../Shared/App/Common';
 
 import { ForumComponent } from './ForumComponent';
 import { routing } from './ForumRouting';
