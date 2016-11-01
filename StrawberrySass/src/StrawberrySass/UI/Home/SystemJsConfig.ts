@@ -24,14 +24,7 @@
         '@angular/http': { main: 'bundles/http.umd.min' },
         '@angular/router': { main: 'bundles/router.umd.min' },
         '@angular/forms': { main: 'bundles/forms.umd.min' },
-        // == Angular Material ==
-        '@angular2-material/button': { main: 'button.umd' },
-        '@angular2-material/card': { main: 'card.umd' },
-        '@angular2-material/core': { main: 'core.umd' },
-        '@angular2-material/icon': { main: 'icon.umd' },
-        '@angular2-material/list': { main: 'list.umd' },
-        '@angular2-material/sidenav': { main: 'sidenav.umd' },
-        '@angular2-material/toolbar': { main: 'toolbar.umd' },
+        '@angular/material': { main: 'material.umd.min' },
         // == RxJS ==
         'rxjs': {}
     };
