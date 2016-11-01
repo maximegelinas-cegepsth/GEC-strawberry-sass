@@ -16,6 +16,7 @@ export class LayoutComponent {
         { url: '/welcome', text: 'Accueil' },
         { url: '/about', text: 'À propos' },
         { url: '/contact-us', text: 'Nous joindre' },
+        { url: '/forum', text: 'Forum' },
         { url: '/members', text: 'Membres' }
     ];
 
