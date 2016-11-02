@@ -1,1 +1,2 @@
-﻿export * from './CommonModule';
+﻿export * from './Account/LoginComponent';
+export * from './CommonModule';

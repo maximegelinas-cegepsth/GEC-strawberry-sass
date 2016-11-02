@@ -1,0 +1,22 @@
+﻿<div class="app-dialog-header">
+    <h1 class="app-dialog-title">Login</h1>    
+
+    <span class="app-fill-remaining"></span>
+
+    <md-icon class="app-dialog-close-btn"
+             (click)="dialogRef.close()">close</md-icon>
+</div>
+
+<div class="app-dialog-content">
+    <md-input placeholder="Adresse courriel"></md-input>
+    <md-input type="password" placeholder="Mot de passe"></md-input>
+</div>
+
+<div class="app-dialog-footer">
+    <button md-button>Se connecter</button>
+    
+    <span class="app-fill-remaining"></span>
+    
+    <button md-button
+            routerLink="/account/register">S'inscrire</button>
+</div>

@@ -1,7 +1,7 @@
 ﻿import { Component, ViewContainerRef } from '@angular/core';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 
-import { LoginComponent } from './LoginComponent';
+import { LoginComponent } from '../Common';
 
 @Component({
     moduleId: module.id,

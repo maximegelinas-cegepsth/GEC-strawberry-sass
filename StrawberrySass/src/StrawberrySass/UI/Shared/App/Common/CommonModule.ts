@@ -1,16 +1,22 @@
 ﻿import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
-import { MaterialModule, MdIconRegistry } from '@angular/material';
+import { MaterialModule } from '@angular/material';
+
+import { AccountModule } from './Account/AccountModule';
 
 @NgModule({
     imports: [
         NgCommonModule,
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+
+        AccountModule
     ],
     declarations: [],
     exports: [
         NgCommonModule,
-        MaterialModule
+        MaterialModule,
+
+        AccountModule
     ]
 })
 export class CommonModule { }
