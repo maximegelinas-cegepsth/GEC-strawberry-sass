@@ -12,21 +12,12 @@ export abstract class HttpService<T extends Object> implements IDataService<T> {
 
     protected options = new RequestOptions({ headers: this.headers });
 
-    private _apiUrl: string;
-
-    protected get apiUrl(): string {
-        return this._apiUrl;
-    }
-
     constructor(
-        apiUrl: string,
         protected http: Http
-    ) {
-        this._apiUrl = apiUrl;
-    }
+    ) { }
 
     add(data: T): Observable<T> {
-        return this.http.post(this.apiUrl, this.serialize(data), this.options)
+        return this.http.post(this.apiUrl(), this.serialize(data), this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -39,11 +30,13 @@ export abstract class HttpService<T extends Object> implements IDataService<T> {
 
     update(data: T): Observable<T> { throw new Error('Not implemented'); }
 
+    protected abstract apiUrl(): string;
+
     private extractData(res: Response) {
         const body = res.json();
         return body.data || {};
     }
- 
+
     private handleError(error: Response | any) {
         let errMsg: string;
 

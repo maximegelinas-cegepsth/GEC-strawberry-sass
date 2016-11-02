@@ -11,11 +11,13 @@ import { Account } from './Account';
 export class AccountService extends HttpService<Account> {
 
     constructor(http: Http) {
-        super('/api/accounts', http);
+        super(http);
     }
 
     register(account: Account): Observable<Account> {
         return this.add(account);
     }
+
+    protected apiUrl(): string { return '/api/accounts'; }
 
 }
