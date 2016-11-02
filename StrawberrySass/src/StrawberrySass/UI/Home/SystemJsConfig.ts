@@ -16,6 +16,7 @@
         // == App ==
         'app': { main: 'Main' },
         'shared:Common': { main: 'Index' },
+        'shared:Core': { main: 'Index' },
         'shared:Layout': { main: 'Index' },
         // == Angular ==
         '@angular/core': { main: 'bundles/core.umd.min' },

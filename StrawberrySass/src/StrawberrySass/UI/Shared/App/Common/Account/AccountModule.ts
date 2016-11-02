@@ -5,9 +5,10 @@ import { ReactiveFormsModule }   from '@angular/forms';
 
 import { CoreModule } from '../../Core';
 
+import { AccountService } from './AccountService';
+import { routing } from './AccountRouting';
 import { LoginComponent } from './LoginComponent';
 import { RegisterComponent } from './RegisterComponent';
-import { routing } from './AccountRouting';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { routing } from './AccountRouting';
         LoginComponent,
         RegisterComponent
     ],
-    entryComponents: [LoginComponent]
+    entryComponents: [LoginComponent],
+    providers: [AccountService]
 })
 export class AccountModule { }

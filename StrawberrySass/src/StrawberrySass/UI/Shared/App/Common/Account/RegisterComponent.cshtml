@@ -3,7 +3,7 @@
 <section class="row center-xs">
     <div class="col-md-10">
         
-        <form [formGroup]="newUserForm">
+        <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
             <md-input type="email" placeholder="Adresse courriel" 
                       formControlName="email"
                       [class.error]="formErrors['email'] != ''">
@@ -16,9 +16,8 @@
                 <md-hint>{{ formErrors['password'] }}</md-hint>
             </md-input>
 
-            <button md-button>Confirmer</button>
+            <button type="submit" md-button>Confirmer</button>
         </form>
-
 
     </div>
 </section>

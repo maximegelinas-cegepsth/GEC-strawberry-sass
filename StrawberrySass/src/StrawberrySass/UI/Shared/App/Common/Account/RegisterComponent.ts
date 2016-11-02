@@ -1,6 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { Account } from './Account';
+import { AccountService } from './AccountService';
+
 @Component({
     moduleId: module.id,
     selector: 'app-register',
@@ -9,23 +12,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-    newUserForm: FormGroup;
+    accountForm: FormGroup;
 
-    constructor(private _formBuilder: FormBuilder) { }
+    constructor(
+        private _accountService: AccountService, 
+        private _formBuilder: FormBuilder
+    ) { }
 
     ngOnInit(): void {
         this.buildForm();
     }
 
     buildForm(): void {
-        this.newUserForm = this._formBuilder.group({
-            'email': ['',
+        this.accountForm = this._formBuilder.group({
+            'email': [null,
                 [
                     Validators.required,
-                    Validators.pattern('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                    Validators.pattern('[\\w\\.\\-]+@[\\w\\-]+\\.\\w{2,4}')
                 ]
             ],
-            'password': ['',
+            'password': [null,
                 [
                     Validators.required,
                     Validators.minLength(8)
@@ -33,16 +39,16 @@ export class RegisterComponent implements OnInit {
             ]
         });
 
-        this.newUserForm.valueChanges
+        this.accountForm.valueChanges
             .subscribe((data: any) => this.onValueChanged(data));
 
         this.onValueChanged();
     }
 
     onValueChanged(data?: any) {
-        if (!this.newUserForm) { return; }
+        if (!this.accountForm) { return; }
 
-        const form = this.newUserForm;
+        const form = this.accountForm;
 
         for (const field in this.formErrors) {
 
@@ -61,6 +67,9 @@ export class RegisterComponent implements OnInit {
     }
 
     onSubmit() {
+        console.log('post', this.accountForm.value);
+        this._accountService.register(this.accountForm.value)
+            .subscribe();
     }
 
     formErrors = {

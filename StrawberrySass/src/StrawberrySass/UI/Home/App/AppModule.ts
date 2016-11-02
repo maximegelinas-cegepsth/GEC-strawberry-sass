@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 
 import { CommonModule } from '../../Shared/App/Common';
+import { CoreModule } from '../../Shared/App/Core';
 import { LayoutComponent, LoginComponent } from '../../Shared/App/Layout';
 
 import { routing } from './AppRouting';
@@ -11,6 +12,7 @@ import { routing } from './AppRouting';
         BrowserModule,
 
         CommonModule,
+        CoreModule.forRoot(),
 
         routing
     ],
