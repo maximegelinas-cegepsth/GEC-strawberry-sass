@@ -16,7 +16,9 @@
                 <md-hint>{{ formErrors['password'] }}</md-hint>
             </md-input>
 
-            <button type="submit" md-button>Confirmer</button>
+            <button type="submit" 
+                    md-button
+                    [disabled]="!accountForm.valid">Confirmer</button>
         </form>
 
     </div>

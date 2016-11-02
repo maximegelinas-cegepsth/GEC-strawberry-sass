@@ -1,3 +1,3 @@
 ﻿export * from './Data/HttpService';
-export * from './Data/IDataService';
+export * from './Data/DataService';
 export * from './CoreModule';

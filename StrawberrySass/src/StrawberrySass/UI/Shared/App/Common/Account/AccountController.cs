@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StrawberrySass.Models;
-using StrawberrySass.Models.AccountViewModels;
 
 namespace StrawberrySass.UI.Shared.App.Common.Account
 {
@@ -23,17 +22,34 @@ namespace StrawberrySass.UI.Shared.App.Common.Account
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
-        [Route("templates/home/register")]
-        public IActionResult RegisterComponent()
-            => PartialView("~/UI/Shared/App/Common/Account/RegisterComponent.cshtml");
+        [Route("templates/shared/login")]
+        public IActionResult LoginComponent() => PartialView("~/UI/Shared/App/Common/Account/LoginComponent.cshtml");
+
+        [Route("templates/shared/register")]
+        public IActionResult RegisterComponent() => PartialView("~/UI/Shared/App/Common/Account/RegisterComponent.cshtml");
 
         [HttpPost]
-        [Route("api/accounts")]
-        public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
+        [Route("api/account/login")]
+        public async Task<IActionResult> Login([FromBody] Account model)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: false, lockoutOnFailure: false);
+
+            if (!result.Succeeded) return BadRequest();
+
+            _logger.LogInformation(1, "User logged in.");
+
+            return Json(model);
+        }
+
+        [HttpPost]
+        [Route("api/account/register")]
+        public async Task<IActionResult> Register([FromBody] Account model)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded) return BadRequest();

@@ -2,7 +2,7 @@
 
 namespace StrawberrySass.UI.Shared.App.Common.Account
 {
-    public class RegisterViewModel
+    public class Account
     {
         [Required]
         [RegularExpression("[\\w\\.\\-]+@[\\w\\-]+\\.\\w{2,4}")]
@@ -10,6 +10,7 @@ namespace StrawberrySass.UI.Shared.App.Common.Account
 
         [Required]
         [StringLength(100, MinimumLength = 6)]
+        [RegularExpression("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*]).*")]
         public string Password { get; set; }
     }
 }

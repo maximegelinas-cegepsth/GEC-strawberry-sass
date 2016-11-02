@@ -13,15 +13,10 @@ export abstract class HttpService<T extends Object> implements DataService<T> {
 
     protected options = new RequestOptions({ headers: this.headers });
 
-    private _http: Http;
-
-    constructor() {
-        const injector = ReflectiveInjector.resolveAndCreate([Http]);
-        this._http = injector.get(Http);
-    }
+    constructor(protected http: Http) { }
 
     add(data: T): Observable<T> {
-        return this._http.post(this.apiUrl(), this.serialize(data), this.options)
+        return this.http.post(this.apiUrl(), this.serialize(data), this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -36,12 +31,16 @@ export abstract class HttpService<T extends Object> implements DataService<T> {
 
     protected abstract apiUrl(): string;
 
-    private extractData(res: Response) {
-        const body = res.json();
+    protected deserialize(response: Response): any {
+        return response.json();
+    }
+
+    protected extractData(response: Response) {
+        const body = this.deserialize(response);
         return body.data || {};
     }
 
-    private handleError(error: Response | any) {
+    protected handleError(error: Response | any) {
         let errMsg: string;
 
         if (error instanceof Response) {
@@ -59,8 +58,8 @@ export abstract class HttpService<T extends Object> implements DataService<T> {
         return Observable.throw(errMsg);
     }
 
-    private serialize(obj: Object): string {
-        return JSON.stringify(obj);
+    protected serialize(data: Object): string {
+        return JSON.stringify(data);
     }
 
 }

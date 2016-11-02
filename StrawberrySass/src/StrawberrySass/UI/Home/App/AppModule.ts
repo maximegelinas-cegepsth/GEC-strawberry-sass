@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { CommonModule } from '../../Shared/App/Common';
 import { CoreModule } from '../../Shared/App/Core';
-import { LayoutComponent, LoginComponent } from '../../Shared/App/Layout';
+import { LayoutComponent } from '../../Shared/App/Layout';
 
 import { routing } from './AppRouting';
 
@@ -18,9 +18,7 @@ import { routing } from './AppRouting';
     ],
     declarations: [
         LayoutComponent,
-        LoginComponent
     ],
-    entryComponents: [LoginComponent],
     bootstrap: [LayoutComponent]
 })
 export class AppModule { }
