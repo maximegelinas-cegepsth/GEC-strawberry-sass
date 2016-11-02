@@ -1,19 +1,11 @@
-﻿import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
-import { Observable } from 'rxjs/Observable';
-
-import { HttpService } from '../../Core';
+﻿import { Observable } from 'rxjs/Observable';
 
 import { Account } from './Account';
 
-@Injectable()
-export class AccountService extends HttpService<Account> {
+export abstract class AccountService {
 
-    register(account: Account): Observable<Account> {
-        return this.add(account);
-    }
+    abstract login(account: Account): Observable<Account>;
 
-    protected apiUrl(): string { return '/api/accounts'; }
+    abstract register(account: Account): Observable<Account>;
 
 }

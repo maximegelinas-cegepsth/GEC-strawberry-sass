@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 
-import { IDataService } from './IDataService';
+import { DataService } from './DataService';
 
-export abstract class HttpService<T extends Object> implements IDataService<T> {
+export abstract class HttpService<T extends Object> implements DataService<T> {
 
     protected headers = new Headers({ 'Content-Type': 'application/json' });
 

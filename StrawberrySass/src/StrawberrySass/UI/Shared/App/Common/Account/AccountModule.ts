@@ -7,6 +7,7 @@ import { CoreModule } from '../../Core';
 
 import { AccountService } from './AccountService';
 import { routing } from './AccountRouting';
+import { HttpAccountService } from './HttpAccountService';
 import { LoginComponent } from './LoginComponent';
 import { RegisterComponent } from './RegisterComponent';
 
@@ -25,6 +26,6 @@ import { RegisterComponent } from './RegisterComponent';
         RegisterComponent
     ],
     entryComponents: [LoginComponent],
-    providers: [AccountService]
+    providers: [{ provide: AccountService, useClass: HttpAccountService }]
 })
 export class AccountModule { }

@@ -1,6 +1,6 @@
 ﻿import { Observable } from 'rxjs/Observable';
 
-export interface IDataService<T extends Object> {
+export interface DataService<T extends Object> {
 
     add(data: T): Observable<T>;
 
