@@ -12,14 +12,11 @@
     ) {
     @include dynamic { }
     @include static {
-        text-align: center;
-        .app-contributors {
-            margin-top: 15vh;
+        .row > div {
+            text-align: right;
         }
-        .app-contributor {
-            .app-contributor-photo {
-                max-height: 300px;
-            }
-        }  
+        button {
+            margin: 16px 0;
+        }
     }
 }

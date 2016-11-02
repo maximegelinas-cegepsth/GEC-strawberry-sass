@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../../node_modules/strawberry/src/strawberry" />
+﻿/// <reference path="../References" />
 
 
 @import 'strawberry/core';
@@ -10,7 +10,7 @@
     $selector: '.app-body',
     $declarations: (
         'color': get-color('foreground'),
-        'font': get-font('primary')
+        'font': get-font('paragraphs')
         )
     ) {
     @include dynamic {

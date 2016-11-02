@@ -1,0 +1,51 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-dialog',
+    $selector: '.app-body md-dialog-container',
+    $declarations: (
+        'background-color': get-color('background'),
+        'border-radius': 4px,
+        'header-background-color': get-color('primary'),
+        'header-color': get-color('foreground', 'light'),
+        'padding': 24px,
+        )
+    ) {
+    @include dynamic {
+        background-color: get('background-color');
+        border-radius: get('border-radius');
+        .app-dialog-header {
+            background-color: get('header-background-color');
+            color: get('header-color');
+            padding: get('padding');
+        }
+        .app-dialog-content {
+            padding: get('padding') get('padding') 0;
+        }
+        .app-dialog-footer {
+            padding: get('padding');
+        }
+    }
+    @include static {
+        padding: 0;
+        .app-dialog-header {
+            align-items: center;
+            display: flex;
+            width: 30vw;
+            .app-dialog-title {
+                margin: 0;
+            }
+            .app-dialog-close-btn {
+                cursor: pointer
+            }
+        }
+        .app-dialog-footer {
+            display: flex;
+        }
+    }
+}

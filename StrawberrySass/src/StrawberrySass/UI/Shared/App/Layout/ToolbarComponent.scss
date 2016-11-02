@@ -10,6 +10,7 @@
     $selector: ':host',
     $declarations: (
         'background-color': get-color('primary'),
+        'brand-font': get-font('headers'),
         'color': get-color('foreground', 'light')
         )
     ) {
@@ -17,6 +18,9 @@
         .app-toolbar {
             background-color: get('background-color');
             color: get('color');
+            .app-brand {
+                font: get('brand-font');
+            }
         }
     }
     @include static {
@@ -24,6 +28,14 @@
             .app-menu-btn {
                 cursor: pointer;
                 margin-right: 10px;
+            }
+            .app-brand {
+                cursor: pointer;
+                font-size: 2rem;
+                margin-left: 20px;
+            }
+            .app-login-btn {
+                cursor: pointer;
             }
         }
     }

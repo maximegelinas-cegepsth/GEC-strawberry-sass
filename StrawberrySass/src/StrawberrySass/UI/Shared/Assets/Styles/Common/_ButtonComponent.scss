@@ -1,0 +1,33 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-button',
+    $selector: '.app-body button',
+    $declarations: (
+        'background-color': transparent,
+        'color': get-color('accent'),
+        '!': (
+            'background-color': get-color('accent'),
+            'color': get-color('foreground', 'light'),
+            )
+        )
+    ) {
+    @include dynamic {
+        background-color: get('background-color');
+        color: get('color');
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: get('!:background-color');
+            color: get('!:color');
+        }
+    }
+    @include static {
+        text-transform: uppercase;
+    }
+}

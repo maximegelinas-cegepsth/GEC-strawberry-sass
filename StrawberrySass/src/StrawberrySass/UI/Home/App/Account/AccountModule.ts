@@ -1,17 +1,19 @@
 ﻿import { NgModule } from '@angular/core';
-import { CommonModule }   from '@angular/common';
+import { ReactiveFormsModule }   from '@angular/forms';
 
-import { LoginComponent } from './LoginComponent';
+import { CommonModule } from '../../../Shared/App/Common';
+
+import { RegisterComponent } from './RegisterComponent';
 import { routing } from './AccountRouting';
 
 @NgModule({
     imports: [
+        ReactiveFormsModule,
+
         CommonModule,    
 
         routing
     ],
-    declarations: [
-        LoginComponent
-    ]
+    declarations: [RegisterComponent]
 })
 export class AccountModule { }

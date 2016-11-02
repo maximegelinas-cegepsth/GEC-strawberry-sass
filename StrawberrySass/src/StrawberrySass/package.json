@@ -25,7 +25,7 @@
   "scripts": {
     "postinstall": "npm run typings",
     "build": "cpx \"./UI/**/*.{html,png,jpg}\" ./wwwroot && tsc -p ./tsconfig.json && node-sass ./UI/ -o ./wwwroot/ --include-path ./node_modules/strawberry/dist --include-path ./UI/Shared",
-    "build:watch": "concurrently \"cpx \"./UI/**/*.{html,png,jpg}\" ./wwwroot -w\" \"tsc -p ./tsconfig.json -w\" \"node-sass ./UI/ -o ./wwwroot/ --include-path ./node_modules/strawberry/src --include-path ./UI/Shared -w\"",
+    "build:watch": "concurrently \"cpx \"./UI/**/*.{html,png,jpg}\" ./wwwroot -w\" \"tsc -p ./tsconfig.json -w\" \"node-sass ./UI/ -o ./wwwroot/ --include-path ./node_modules/strawberry/dist --include-path ./UI/Shared -w\"",
     "clean": "rimraf ./wwwroot",
     "typings": "typings install",
     "vendor": "npm run vendor:angular && npm run vendor:angular-material && npm run vendor:core-js && npm run vendor:hammerjs && npm run vendor:flexboxgrid && npm run vendor:reflect-metadata && npm run vendor:rxjs && npm run vendor:systemjs && npm run vendor:zone.js",

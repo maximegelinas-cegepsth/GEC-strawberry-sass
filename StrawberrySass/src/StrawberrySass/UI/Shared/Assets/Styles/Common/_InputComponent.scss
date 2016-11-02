@@ -1,0 +1,47 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-input',
+    $selector: '.app-body md-input',
+    $declarations: (
+        'border': 1px solid lighten(get-color('foreground'), 70%),
+        'hint-color': get-color('foreground'),
+        'margin': 16px 0,
+        'placeholder-color': lighten(get-color('foreground'), 70%),
+        '!focused': (
+            'border-color': get-color('accent'),
+            'border-width': 2px,
+            'placeholder-color': get-color('accent'),
+            )
+        )
+    ) {
+    @include dynamic {
+        margin: get('margin');
+        label {
+            color: get('placeholder-color');
+            &.md-focused {
+                color: get('!focused:placeholder-color');
+            }
+        }        
+        div.md-input-underline {
+            border-top-style: nth(get('border'), 2);
+            border-top-width: nth(get('border'), 1);
+            color: nth(get('border'), 3);
+            > .md-input-ripple.md-focused {
+                height: get('!focused:border-width');
+                background-color: get('!focused:border-color');
+            }
+        }
+        md-hint {
+            color: get('hint-color');
+        }
+    }
+    @include static {
+        width: 100%
+    }
+}

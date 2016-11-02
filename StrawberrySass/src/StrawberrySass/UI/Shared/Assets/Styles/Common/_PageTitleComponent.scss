@@ -1,0 +1,28 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-page-title',
+    $selector: '.app-page-title',
+    $declarations: (
+        'background-color': get-color('primary', 'light'),
+		'color': get-color('foreground', 'light'),
+        'font': get-font('headers'),
+        )
+    ) {
+    @include dynamic {
+		background-color: get('background-color');
+        color: get('color');
+        font: get('font');
+    }
+    @include static {
+        font-size: 2.5rem;
+        margin: 0 -32px 18vh;
+        padding: 24px 32px;
+        text-align: left;
+    }
+}

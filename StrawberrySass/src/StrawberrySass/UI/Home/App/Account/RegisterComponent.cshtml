@@ -1,1 +1,24 @@
-﻿<h1>Register</h1>
+﻿<h1 class="app-page-title">Inscription</h1>
+
+<section class="row center-xs">
+    <div class="col-md-10">
+        
+        <form [formGroup]="newUserForm">
+            <md-input type="email" placeholder="Adresse courriel" 
+                      formControlName="email"
+                      [class.error]="formErrors['email'] != ''">
+                <md-hint>{{ formErrors['email'] }}</md-hint>
+            </md-input>
+
+            <md-input type="password" placeholder="Mot de passe"
+                      formControlName="password"
+                      [class.error]="formErrors['password'] != ''">
+                <md-hint>{{ formErrors['password'] }}</md-hint>
+            </md-input>
+
+            <button md-button>Confirmer</button>
+        </form>
+
+
+    </div>
+</section>

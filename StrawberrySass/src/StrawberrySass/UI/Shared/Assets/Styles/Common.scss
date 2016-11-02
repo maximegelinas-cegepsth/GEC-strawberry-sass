@@ -1,1 +1,15 @@
-﻿@import './Common/BodyComponent';
+﻿// == Material ==
+@import './Common/ButtonComponent';
+@import './Common/DialogComponent';
+@import './Common/InputComponent';
+// == App ==
+@import './Common/BodyComponent';
+@import './Common/PageTitleComponent';
+
+section {
+    margin: 18vh 0;
+}
+
+.app-fill-remaining {
+    flex: 1 1 auto;
+}

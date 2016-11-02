@@ -26,6 +26,11 @@
     );
 
 @include color(
+    $name: 'danger',
+    $code: #e51c23
+    );
+
+@include color(
     $name: 'foreground',
     $code: rgba(#000, .87)
     ) {
@@ -45,6 +50,34 @@
 // =====
 
 @include font(
-    $name: 'primary',
+    $name: 'headers',
+    $family: 'Marck Script, cursive'
+    );
+
+@include font(
+    $name: 'paragraphs',
     $family: 'Roboto, sans-serif'
     );
+
+// ==========
+// Components
+// ==========
+
+@include component(
+    $name: 'app-input',
+    $declarations: ('null':'null')
+    ) {
+    @include component-variant(
+        $name: 'error',
+        $selector: '.error',
+        $declarations: (
+            'border': 1px solid get-color('danger'),
+            'hint-color': get-color('danger'),
+            'placeholder-color': get-color('danger'),
+            '!focused': (
+                'border-color': get-color('danger'),
+                'placeholder-color': get-color('danger'),
+                )
+            )
+        );
+}

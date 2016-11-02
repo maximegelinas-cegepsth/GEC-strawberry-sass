@@ -1,9 +1,17 @@
-﻿<!-- == Toolbar == -->
+﻿@using StrawberrySass.UI.Shared.App.Layout
+
+<!-- == Toolbar == -->
 <md-toolbar class="app-toolbar">
     <md-icon class="app-menu-btn"
              (click)="sidenav.toggle()">menu</md-icon>
 
-    <span routerLink="/welcome">STRAWBERRYSASS</span>
+    <span class="app-brand"
+          routerLink="/welcome">Strawberry Sass</span>
+
+    <span class="app-fill-remaining"></span>
+
+    <md-icon class="app-login-btn"
+             (click)="openLoginDialog()">account_circle</md-icon>
 </md-toolbar>
 
 <md-sidenav-layout fullscreen
@@ -15,26 +23,27 @@
                 mode="side">
 
         <md-nav-list class="app-nav">
+            @foreach (Hyperlink link in ViewBag.MenuLinks)
+            {
             <a class="app-nav-link"
-               *ngFor="let link of links"
                md-list-item
-               [routerLink]="link.url"
+               routerLink="@link.NavigationUrl"
                routerLinkActive="active">
-                {{ link.text }}
+                @link.DisplayedText
             </a>
+            }
         </md-nav-list>
-
     </md-sidenav>
 
     <!-- == Content == -->
     <div class="container-fluid">
         <router-outlet></router-outlet>
     </div>
-    
+
     <!--<footer class="app-footer">
         <div class="container-fluid">
             Code protégé par licence MIT.
-        </div>       
+        </div>
     </footer>-->
 
 </md-sidenav-layout>

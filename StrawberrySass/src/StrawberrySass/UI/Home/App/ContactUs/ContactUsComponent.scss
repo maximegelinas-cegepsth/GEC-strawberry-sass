@@ -10,19 +10,11 @@
     $selector: ':host',
     $declarations: ('null':'null')
     ) {
-    @include dynamic {
-        section {
-            margin: 18vh 0;
-        }
-        .app-contact-way {
-            .app-contact-way-icon {
-                font-size: 8rem;
-            }
-        }        
-    }
+    @include dynamic { }
     @include static {
         text-align: center;
         .app-contact-way-icon {
+            font-size: 8rem;
             height: auto;
             width: auto;
         }

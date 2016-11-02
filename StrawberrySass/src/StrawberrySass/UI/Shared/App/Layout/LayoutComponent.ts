@@ -1,9 +1,12 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, ViewContainerRef } from '@angular/core';
+import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+
+import { LoginComponent } from './LoginComponent';
 
 @Component({
     moduleId: module.id,
     selector: 'app-layout',
-    templateUrl: 'LayoutComponent.html',
+    templateUrl: '/templates/shared/layout',
     styleUrls: [
         'ToolbarComponent.css',
         'SidenavComponent.css',
@@ -12,15 +15,27 @@
 })
 export class LayoutComponent {
 
-    links: {}[] = [
-        { url: '/welcome', text: 'Accueil' },
-        { url: '/about', text: 'À propos' },
-        { url: '/contact-us', text: 'Nous joindre' },
-        { url: '/forum', text: 'Forum' },
-        { url: '/members', text: 'Membres' }
-    ];
+    loginDialogRef: MdDialogRef<LoginComponent>;
 
     // TODO(maximegelinas): Gets the toolbar height dynamically.
     toolbarHeight = '64px';
+
+    constructor(
+        public loginDialog: MdDialog,
+        public viewContainerRef: ViewContainerRef
+    ) { }
+
+    openLoginDialog() {
+        if (this.loginDialogRef != null) return;
+
+        const config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+
+        this.loginDialogRef = this.loginDialog.open(LoginComponent, config);
+
+        this.loginDialogRef.afterClosed().subscribe(() => {
+            this.loginDialogRef = null;
+        });
+    }
 
 }
