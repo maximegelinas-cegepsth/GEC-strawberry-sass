@@ -1,4 +1,5 @@
-﻿import { Headers, Http, RequestOptions, Response } from '@angular/http';
+﻿import { ReflectiveInjector } from '@angular/core';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
@@ -12,12 +13,15 @@ export abstract class HttpService<T extends Object> implements IDataService<T> {
 
     protected options = new RequestOptions({ headers: this.headers });
 
-    constructor(
-        protected http: Http
-    ) { }
+    private _http: Http;
+
+    constructor() {
+        const injector = ReflectiveInjector.resolveAndCreate([Http]);
+        this._http = injector.get(Http);
+    }
 
     add(data: T): Observable<T> {
-        return this.http.post(this.apiUrl(), this.serialize(data), this.options)
+        return this._http.post(this.apiUrl(), this.serialize(data), this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -10,10 +10,6 @@ import { Account } from './Account';
 @Injectable()
 export class AccountService extends HttpService<Account> {
 
-    constructor(http: Http) {
-        super(http);
-    }
-
     register(account: Account): Observable<Account> {
         return this.add(account);
     }
