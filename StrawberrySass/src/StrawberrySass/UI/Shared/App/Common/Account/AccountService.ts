@@ -2,14 +2,14 @@
 
 import { Observable } from 'rxjs/Observable';
 
-import { Account } from './Account';
+import { User } from './User';
 
 export abstract class AccountService {
 
-    logged: EventEmitter<boolean>;
+    logged: EventEmitter<User>;
 
-    abstract login(account: Account): Observable<Account>;
+    abstract login(user: User): Observable<User>;
 
-    abstract register(account: Account): Observable<Account>;
+    abstract register(user: User): Observable<User>;
 
 }

@@ -22,13 +22,17 @@
                 mode="side">
 
         <md-nav-list class="app-nav">
-            <a class="app-nav-link" md-list-item routerLink="/welcome" routerLinkActive="active"> Bienvenue</a>
-            <a class="app-nav-link" md-list-item routerLink="/about" routerLinkActive="active"> À propos</a>
-            <a class="app-nav-link" md-list-item routerLink="/contact-us" routerLinkActive="active"> Nous joindre</a>
-        </md-nav-list>
-        
-        <md-nav-list class="app-nav" *ngIf="showMembersLinks">
-            <a class="app-nav-link" md-list-item routerLink="/forum" routerLinkActive="active"> Forum</a>
+            <a class="app-nav-link" md-list-item routerLink="/welcome" routerLinkActive="active">Bienvenue</a>
+            <a class="app-nav-link" md-list-item routerLink="/about" routerLinkActive="active">À propos</a>
+            <a class="app-nav-link" md-list-item routerLink="/contact-us" routerLinkActive="active">Nous joindre</a>
+
+            <div *ngIf="showMembersLinks">
+                <a class="app-nav-link" md-list-item routerLink="/forum" routerLinkActive="active">Forum</a>
+            </div>
+
+            <div *ngIf="showAdminsLinks">
+                <a class="app-nav-link" md-list-item routerLink="/members" routerLinkActive="active">Membres</a>
+            </div>
         </md-nav-list>
     </md-sidenav>
 

@@ -20,6 +20,7 @@ namespace StrawberrySass.Data
             {
                 "Administrator",
                 "Moderator",
+                "Member",
                 "ForumBanned"
             });
 

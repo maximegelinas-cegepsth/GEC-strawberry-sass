@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 
-import { AccountService, LoginComponent } from '../Common';
+import { AccountService, LoginComponent, User } from '../Common';
 
 @Component({
     moduleId: module.id,
@@ -21,6 +21,8 @@ export class LayoutComponent implements OnInit {
 
     showMembersLinks = false;
 
+    showAdminsLinks = false;
+
     // TODO(maximegelinas): Gets the toolbar height dynamically.
     toolbarHeight = '64px';
 
@@ -31,13 +33,24 @@ export class LayoutComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this._accountService.logged.subscribe(() => {
-            this.showLoginBtn = false;
-            this.showMembersLinks = true;
-        });
+        this._accountService.logged.subscribe((user: User) => this.onLoggedUser(user));
     }
 
-    openLoginDialog() {
+    onLoggedUser(user: User): void {
+        if (!user) return;
+        this.showLoginBtn = false;
+
+        console.log(user);
+        console.log(user.roles);
+
+        if (!user.roles && user.roles.find(r => r === 'ForumBanned')) return;
+        this.showMembersLinks = true;
+
+        if (user.roles.find(r => r !== 'Administrator')) return;
+        this.showAdminsLinks = true;
+    }
+
+    openLoginDialog(): void {
         if (this.loginDialogRef != null) return;
 
         const config = new MdDialogConfig();

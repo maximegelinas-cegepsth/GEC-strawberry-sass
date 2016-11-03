@@ -5,31 +5,33 @@ import { Observable } from 'rxjs/Observable';
 
 import { HttpService } from '../../Core';
 
-import { Account } from './Account';
+import { User } from './User';
 import { AccountService } from './AccountService';
 
 @Injectable()
-export class HttpAccountService extends HttpService<Account> implements AccountService {
+export class HttpAccountService extends HttpService<User> implements AccountService {
 
-    logged: EventEmitter<boolean> = new EventEmitter();
+    logged: EventEmitter<User> = new EventEmitter();
 
     constructor(http: Http) {
         super(http);
     }
 
-    login(account: Account): Observable<Account> {
-        return this.http.post(`${this.apiUrl()}/login`, this.serialize(account), this.options)
-            .map(() => {
-                this.logged.emit(true);
+    login(user: User): Observable<User> {
+        return this.http.post(`${this.apiUrl()}/login`, this.serialize(user), this.options)
+            .map(this.extractData)
+            .map((user: any) => {
+                this.logged.emit(user);
                 return this.extractData;
             })
             .catch(this.handleError);
     }
 
-    register(account: Account): Observable<Account> {
-        return this.http.post(`${this.apiUrl()}/register`, this.serialize(account), this.options)
-            .map(() => {
-                this.logged.emit(true);
+    register(user: User): Observable<User> {
+        return this.http.post(`${this.apiUrl()}/register`, this.serialize(user), this.options)
+            .map(this.extractData)
+            .map((user: any) => {
+                this.logged.emit(user);
                 return this.extractData;
             })
             .catch(this.handleError);

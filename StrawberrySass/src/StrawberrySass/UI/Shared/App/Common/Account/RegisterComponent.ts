@@ -12,7 +12,7 @@ import { AccountService } from './AccountService';
 })
 export class RegisterComponent implements OnInit {
 
-    accountForm: FormGroup;
+    registerForm: FormGroup;
 
     constructor(
         private _accountService: AccountService,
@@ -25,9 +25,9 @@ export class RegisterComponent implements OnInit {
     }
 
     onValueChanged(data?: any) {
-        if (!this.accountForm) { return; }
+        if (!this.registerForm) { return; }
 
-        const form = this.accountForm;
+        const form = this.registerForm;
 
         for (const field in this.formErrors) {
 
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     }
 
     onSubmit() {
-        this._accountService.register(this.accountForm.value)
+        this._accountService.register(this.registerForm.value)
             .subscribe(
             () => {
                 this._router.navigate(['/welcome']);
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
     }
 
     buildForm(): void {
-        this.accountForm = this._formBuilder.group({
+        this.registerForm = this._formBuilder.group({
             'email': [null,
                 [
                     Validators.required,
@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
             ]
         });
 
-        this.accountForm.valueChanges
+        this.registerForm.valueChanges
             .subscribe((data: any) => this.onValueChanged(data));
 
         this.onValueChanged();

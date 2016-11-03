@@ -31,13 +31,9 @@ export abstract class HttpService<T extends Object> implements DataService<T> {
 
     protected abstract apiUrl(): string;
 
-    protected deserialize(response: Response): any {
-        return response.json();
-    }
-
     protected extractData(response: Response) {
-        const body = this.deserialize(response);
-        return body.data || {};
+        const data = response.json();
+        return data || {};
     }
 
     protected handleError(error: Response | any) {

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdDialogRef } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 
-import { Account } from './Account';
 import { AccountService } from './AccountService';
 
 @Component({
@@ -14,7 +13,7 @@ import { AccountService } from './AccountService';
 })
 export class LoginComponent implements OnInit {
 
-    accountForm: FormGroup;
+    loginForm: FormGroup;
 
     constructor(
         public dialogRef: MdDialogRef<LoginComponent>,
@@ -34,9 +33,9 @@ export class LoginComponent implements OnInit {
     }
 
     onValueChanged(data?: any) {
-        if (!this.accountForm) { return; }
+        if (!this.loginForm) { return; }
 
-        const form = this.accountForm;
+        const form = this.loginForm;
 
         for (const field in this.formErrors) {
 
@@ -55,7 +54,7 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        this._accountService.login(this.accountForm.value)
+        this._accountService.login(this.loginForm.value)
             .subscribe(
             () => {
                 this.dialogRef.close();
@@ -66,14 +65,14 @@ export class LoginComponent implements OnInit {
     }
 
     buildForm(): void {
-        this.accountForm = this._formBuilder.group({
-            'email': [null,
+        this.loginForm = this._formBuilder.group({
+            'email': ['admin@strawberrysass.com',
                 [
                     Validators.required,
                     Validators.pattern('[\\w\\.\\-]+@[\\w\\-]+\\.\\w{2,4}')
                 ]
             ],
-            'password': [null,
+            'password': ['Str=123!',
                 [
                     Validators.required,
                     Validators.minLength(8),
@@ -82,7 +81,7 @@ export class LoginComponent implements OnInit {
             ]
         });
 
-        this.accountForm.valueChanges
+        this.loginForm.valueChanges
             .subscribe((data: any) => this.onValueChanged(data));
 
         this.onValueChanged();
