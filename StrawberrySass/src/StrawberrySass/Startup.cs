@@ -101,6 +101,10 @@ namespace StrawberrySass
 
             app.UseIdentity();
 
+            // == Initial datas ==
+
+            app.SeedData();
+
             // == Routes ==
 
             app.UseMvc(routes =>
