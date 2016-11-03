@@ -1,4 +1,4 @@
-﻿import { ReflectiveInjector } from '@angular/core';
+﻿import { Inject, ReflectiveInjector } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -13,7 +13,7 @@ export abstract class HttpService<T extends Object> implements DataService<T> {
 
     protected options = new RequestOptions({ headers: this.headers });
 
-    constructor(protected http: Http) { }
+    constructor(protected http: Http) {}
 
     add(data: T): Observable<T> {
         return this.http.post(this.apiUrl(), this.serialize(data), this.options)
@@ -25,7 +25,11 @@ export abstract class HttpService<T extends Object> implements DataService<T> {
 
     get(key: string): Observable<T> { throw new Error('Not implemented'); }
 
-    getAll(): Observable<T[]> { throw new Error('Not implemented'); }
+    getAll(): Observable<T[]> {
+        return this.http.get(this.apiUrl())
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     update(data: T): Observable<T> { throw new Error('Not implemented'); }
 

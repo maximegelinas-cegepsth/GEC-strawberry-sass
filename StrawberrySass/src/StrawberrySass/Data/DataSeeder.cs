@@ -26,11 +26,33 @@ namespace StrawberrySass.Data
 
             SeedUsers(userManager, new[]
             {
-                new []
+                new Dictionary<string, string>()
                 {
-                    "admin@strawberrysass.com",
-                    "Str=123!",
-                    "Administrator"
+                    { "Email", "admin@strawberrysass.com" },
+                    { "UserName", "AdminUser" },
+                    { "Password", "Qwert123!" },
+                    { "Role", "Administrator" }
+                },
+                new Dictionary<string, string>()
+                {
+                    { "Email", "moderator@strawberrysass.com" },
+                    { "UserName", "ModeratorUser" },
+                    { "Password", "Qwert123!" },
+                    { "Role", "Moderator" }
+                },
+                new Dictionary<string, string>()
+                {
+                    { "Email", "member@strawberrysass.com" },
+                    { "UserName", "MemberUser" },
+                    { "Password", "Qwert123!" },
+                    { "Role", "Member" }
+                },
+                new Dictionary<string, string>()
+                {
+                    { "Email", "forumBanned@strawberrysass.com" },
+                    { "UserName", "ForumBannedUser" },
+                    { "Password", "Qwert123!" },
+                    { "Role", "ForumBanned" }
                 }
             });
         }
@@ -42,17 +64,18 @@ namespace StrawberrySass.Data
                     await roleManager.CreateAsync(new IdentityRole(role));
         }
 
-        private static async void SeedUsers(UserManager<ApplicationUser> userManager, IEnumerable<string[]> users)
+        private static async void SeedUsers(UserManager<ApplicationUser> userManager, IEnumerable<IDictionary<string, string>> users)
         {
             var existingUsers = await userManager.Users.ToListAsync();
 
             foreach (var user in users)
             {
-                if (existingUsers.Any(u => u.Email == user[0])) continue;
 
-                var newUser = new ApplicationUser() { Email = user[0], UserName = user[0]};
-                await userManager.CreateAsync(newUser, user[1]);
-                await userManager.AddToRoleAsync(newUser, user[2]);
+                if (existingUsers.Any(u => u.Email == user["Email"])) continue;
+
+                var newUser = new ApplicationUser() { Email = user["Email"], UserName = user["UserName"] };
+                await userManager.CreateAsync(newUser, user["Password"]);
+                await userManager.AddToRoleAsync(newUser, user["Role"]);
             }
         }
     }

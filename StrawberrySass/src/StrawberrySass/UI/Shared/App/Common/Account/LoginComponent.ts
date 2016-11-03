@@ -66,16 +66,18 @@ export class LoginComponent implements OnInit {
 
     buildForm(): void {
         this.loginForm = this._formBuilder.group({
-            'email': ['admin@strawberrysass.com',
+            'userName': ['AdminUser',
                 [
                     Validators.required,
-                    Validators.pattern('[\\w\\.\\-]+@[\\w\\-]+\\.\\w{2,4}')
+                    Validators.maxLength(100),
+                    Validators.minLength(4)
                 ]
             ],
-            'password': ['Str=123!',
+            'password': ['Qwert123!',
                 [
                     Validators.required,
-                    Validators.minLength(8),
+                    Validators.maxLength(100),
+                    Validators.minLength(6),
                     Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*]).*')
                 ]
             ]
@@ -88,18 +90,20 @@ export class LoginComponent implements OnInit {
     }
 
     formErrors = {
-        'email': '',
+        'userName': '',
         'password': ''
     };
 
     validationMessages = {
-        'email': {
-            'required': 'L\'Adresse courriel obligatoire.',
-            'pattern': 'L\'Adresse courriel doit être valide.'
+        'userName': {
+            'required': 'Le nom d\'usager est obligatoire.',
+            'maxlength': 'Le nom d\'usager doit contenir au maximum 100 caractères.',
+            'minlength': 'Le nom d\'usager doit contenir au minimum 4 caractères.'
         },
         'password': {
             'required': 'Le mot de passe est obligatoire.',
-            'minlength': 'Le mot de passe doit contenir au minimum 8 caractères.',
+            'maxlength': 'Le mot de passe doit contenir au maximum 100 caractères.',
+            'minlength': 'Le mot de passe doit contenir au minimum 6 caractères.',
             'pattern': 'Le mot de passe doit contenir au moins une mujuscule, un nombre et un caractère spécial.'
         }
     };

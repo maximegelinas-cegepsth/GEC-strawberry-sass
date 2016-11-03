@@ -4,7 +4,13 @@
     <div class="col-md-10">
         
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <md-input type="email" placeholder="Adresse courriel" 
+            <md-input type="text" placeholder="Nom d'usager"
+                      formControlName="userName"
+                      [class.error]="formErrors['userName'] != ''">
+                <md-hint>{{ formErrors['userName'] }}</md-hint>
+            </md-input>
+
+            <md-input type="email" placeholder="Adresse courriel"
                       formControlName="email"
                       [class.error]="formErrors['email'] != ''">
                 <md-hint>{{ formErrors['email'] }}</md-hint>
@@ -16,7 +22,7 @@
                 <md-hint>{{ formErrors['password'] }}</md-hint>
             </md-input>
 
-            <button type="submit" 
+            <button type="submit"
                     md-button
                     [disabled]="!registerForm.valid">Confirmer</button>
         </form>

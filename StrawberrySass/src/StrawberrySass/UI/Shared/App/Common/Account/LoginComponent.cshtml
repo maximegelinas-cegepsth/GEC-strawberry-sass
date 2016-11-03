@@ -11,10 +11,10 @@
 
     <div class="app-dialog-content">
 
-        <md-input type="email" placeholder="Adresse courriel"
-                  formControlName="email"
-                  [class.error]="formErrors['email'] != ''">
-            <md-hint>{{ formErrors['email'] }}</md-hint>
+        <md-input type="text" placeholder="Nom d'usager"
+                  formControlName="userName"
+                  [class.error]="formErrors['userName'] != ''">
+            <md-hint>{{ formErrors['userName'] }}</md-hint>
         </md-input>
 
         <md-input type="password" placeholder="Mot de passe"

@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 
-import { AccountService, LoginComponent, User } from '../Common';
+import { AccountService, LoginComponent, RegisteredUser } from '../Common';
 
 @Component({
     moduleId: module.id,
@@ -33,15 +33,12 @@ export class LayoutComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this._accountService.logged.subscribe((user: User) => this.onLoggedUser(user));
+        this._accountService.logged.subscribe((user: RegisteredUser) => this.onLoggedUser(user));
     }
 
-    onLoggedUser(user: User): void {
+    onLoggedUser(user: RegisteredUser): void {
         if (!user) return;
         this.showLoginBtn = false;
-
-        console.log(user);
-        console.log(user.roles);
 
         if (!user.roles && user.roles.find(r => r === 'ForumBanned')) return;
         this.showMembersLinks = true;

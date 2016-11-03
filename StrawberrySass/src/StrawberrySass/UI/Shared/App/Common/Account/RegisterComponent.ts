@@ -64,6 +64,13 @@ export class RegisterComponent implements OnInit {
                     Validators.pattern('[\\w\\.\\-]+@[\\w\\-]+\\.\\w{2,4}')
                 ]
             ],
+            'userName': [null,
+                [
+                    Validators.required,
+                    Validators.maxLength(100),
+                    Validators.minLength(4)
+                ]
+            ],
             'password': [null,
                 [
                     Validators.required,
@@ -81,6 +88,7 @@ export class RegisterComponent implements OnInit {
 
     formErrors = {
         'email': '',
+        'userName': '',
         'password': ''
     };
 
@@ -88,6 +96,11 @@ export class RegisterComponent implements OnInit {
         'email': {
             'required': 'L\'Adresse courriel obligatoire.',
             'pattern': 'L\'Adresse courriel doit être valide.'
+        },
+        'userName': {
+            'required': 'Le nom d\'usager est obligatoire.',
+            'maxlength': 'Le nom d\'usager doit contenir au maximum 100 caractères.',
+            'minlength': 'Le nom d\'usager doit contenir au minimum 4 caractères.'
         },
         'password': {
             'required': 'Le mot de passe est obligatoire.',
