@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using StrawberrySass.Models;
 using Microsoft.EntityFrameworkCore;
 using StrawberrySass.Models.Forum;
@@ -19,7 +21,7 @@ namespace StrawberrySass.Data
 
             if (context == null || roleManager == null || userManager == null) return;
 
-            SeedUserRoles(roleManager, new[]
+            await SeedUserRoles(roleManager, new[]
             {
                 "Administrator",
                 "Moderator",
@@ -27,7 +29,7 @@ namespace StrawberrySass.Data
                 "ForumBanned"
             });
 
-            SeedUsers(userManager, new[]
+            await SeedUsers(userManager, new[]
             {
                 new Dictionary<string, string>()
                 {
@@ -59,7 +61,7 @@ namespace StrawberrySass.Data
                 }
             });
 
-            SeedForumSubjects(context, new[]
+            await SeedForumSubjects(context, new[]
             {
                 new Subject()
                 {
@@ -79,14 +81,16 @@ namespace StrawberrySass.Data
             });            
         }
 
-        private static async void SeedUserRoles(RoleManager<IdentityRole> roleManager, IEnumerable<string> roles)
+        private static async Task<bool> SeedUserRoles(RoleManager<IdentityRole> roleManager, IEnumerable<string> roles)
         {
             foreach (var role in roles)
                 if (!await roleManager.RoleExistsAsync(role))
                     await roleManager.CreateAsync(new IdentityRole(role));
+
+            return true;
         }
 
-        private static async void SeedUsers(UserManager<ApplicationUser> userManager, IEnumerable<IDictionary<string, string>> users)
+        private static async Task<bool> SeedUsers(UserManager<ApplicationUser> userManager, IEnumerable<IDictionary<string, string>> users)
         {
             var existingUsers = await userManager.Users.ToListAsync();
 
@@ -99,15 +103,19 @@ namespace StrawberrySass.Data
                 await userManager.CreateAsync(newUser, user["Password"]);
                 await userManager.AddToRoleAsync(newUser, user["Role"]);
             }
+
+            return true;
         }
 
-        private static async void SeedForumSubjects(ApplicationDbContext context, IEnumerable<Subject> subjects)
+        private static async Task<bool> SeedForumSubjects(ApplicationDbContext context, IEnumerable<Subject> subjects)
         {
-            if (context.Subjects.Any()) return;
+            if (context.Subjects.Any()) return false;
 
             context.Subjects.AddRange(subjects);
 
             await context.SaveChangesAsync();
+
+            return true;
         }
     }
 }
