@@ -1,0 +1,35 @@
+﻿<h1 class="app-page-title">Membre</h1>
+
+<section class="row center-xs">
+    <div class="col-md-10">
+        
+        <form>
+
+            <md-input type="text"
+                      placeholder="Nom d'usager (désactivé)"
+                      disabled
+                      [value]="member?.userName"></md-input>
+
+            <md-input type="text"
+                      placeholder="Adresse courriel (désactivé)"
+                      disabled
+                      [value]="member?.email"></md-input>
+
+            <div class="app-member-role"
+                 *ngFor="let role of member?.roles">
+
+                <md-checkbox [checked]="getRoleValue(role)"
+                             (change)="onMemberRoleChange(role, $event)">
+                    {{ getRoleName(role) }}
+                </md-checkbox>
+            </div>
+
+            <div class="app-confirm-section">
+                <button md-button
+                        (click)="onSubmit()">Confirmer</button>
+            </div>
+
+        </form>
+
+    </div>
+</section>

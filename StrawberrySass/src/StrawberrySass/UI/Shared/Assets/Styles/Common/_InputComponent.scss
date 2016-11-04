@@ -9,29 +9,45 @@
     $name: 'app-input',
     $selector: '.app-body md-input',
     $declarations: (
-        'border': 1px solid lighten(get-color('foreground'), 70%),
+        'border-color': lighten(get-color('foreground'), 70%),
+        'border-style': solid,
+        'border-width': 1px,
         'hint-color': get-color('foreground'),
         'margin': 16px 0,
-        'placeholder-color': lighten(get-color('foreground'), 70%),
+        'label-color': lighten(get-color('foreground'), 70%),
+        '!disabled': (
+            'border-color': lighten(get-color('foreground'), 70%),
+            'border-style': dotted,
+            'border-width': 1px,
+            'hint-color': get-color('foreground'),
+            'label-color': lighten(get-color('foreground'), 70%),
+            ),
         '!focused': (
             'border-color': get-color('accent'),
             'border-width': 2px,
-            'placeholder-color': get-color('accent'),
+            'label-color': get-color('accent'),
             )
         )
     ) {
     @include dynamic {
         margin: get('margin');
         label {
-            color: get('placeholder-color');
+            color: get('label-color');
             &.md-focused {
-                color: get('!focused:placeholder-color');
+                color: get('!focused:label-color');
             }
         }        
         div.md-input-underline {
-            border-top-style: nth(get('border'), 2);
-            border-top-width: nth(get('border'), 1);
-            color: nth(get('border'), 3);
+            // FIXME
+            /*border-top-style: get('border-style');*/
+            border-top-width: get('border-width');
+            color: get('border-color');
+            &[md-disabled] {
+                // FIXME
+                /*border-top-style: get('!disabled:border-style');*/
+                border-top-width: get('!disabled:border-width');
+                color: get('!disabled:border-color');
+            }
             > .md-input-ripple.md-focused {
                 height: get('!focused:border-width');
                 background-color: get('!focused:border-color');
@@ -39,6 +55,14 @@
         }
         md-hint {
             color: get('hint-color');
+        }
+        &[disabled] {
+            label {
+                color: get('!disabled:label-color');
+            }   
+            md-hint {
+                color: get('!disabled:hint-color');
+            }
         }
     }
     @include static {

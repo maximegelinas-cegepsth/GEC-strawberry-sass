@@ -3,6 +3,7 @@
 import { CommonModule } from '../../../Shared/App/Common';
 
 import { HttpMemberService } from './HttpMemberService';
+import { MemberComponent } from './MemberComponent';
 import { MembersComponent } from './MembersComponent';
 import { MemberService } from './MemberService';
 import { routing } from './MembersRouting';
@@ -14,6 +15,7 @@ import { routing } from './MembersRouting';
         routing
     ],
     declarations: [
+        MemberComponent,
         MembersComponent
     ],
     providers: [{ provide: MemberService, useClass: HttpMemberService }]

@@ -4,6 +4,6 @@
     moduleId: module.id,
     selector: 'app-forum',
     templateUrl: '/templates/home/forum',
-    styleUrls: []
+    styleUrls: ['ForumComponent.css']
 })
 export class ForumComponent {}

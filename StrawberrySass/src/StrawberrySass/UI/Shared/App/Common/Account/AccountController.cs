@@ -19,9 +19,11 @@ namespace StrawberrySass.UI.Shared.App.Common.Account
             _signInManager = signInManager;
         }
 
+        [HttpGet]
         [Route("templates/shared/login")]
         public IActionResult LoginComponent() => PartialView("~/UI/Shared/App/Common/Account/LoginComponent.cshtml");
 
+        [HttpGet]
         [Route("templates/shared/register")]
         public IActionResult RegisterComponent() => PartialView("~/UI/Shared/App/Common/Account/RegisterComponent.cshtml");
 

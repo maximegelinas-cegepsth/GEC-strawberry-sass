@@ -71,12 +71,12 @@
         $name: 'error',
         $selector: '.error',
         $declarations: (
-            'border': 1px solid get-color('danger'),
+            'border-color': get-color('danger'),
             'hint-color': get-color('danger'),
-            'placeholder-color': get-color('danger'),
+            'label-color': get-color('danger'),
             '!focused': (
                 'border-color': get-color('danger'),
-                'placeholder-color': get-color('danger'),
+                'label-color': get-color('danger'),
                 )
             )
         );

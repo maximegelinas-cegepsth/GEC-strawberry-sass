@@ -1,1 +1,43 @@
-﻿<h1>Forum</h1>
+﻿<h1 class="app-page-title">Forum</h1>
+
+<section class="row center-xs">
+    <div class="col-md-10">
+        
+        <div class="app-subject">
+            <div class="app-subject-date">34/34</div>
+            <md-list class="app-subject-box">
+
+                <md-list-item>
+                    <img class="app-subject-author-avatar"
+                         md-list-avatar
+                         [src]="subject?.author?.avatar || '/Shared/Assets/Images/UnknownPerson.png'"
+                         [alt]="subject?.author?.userName">
+
+                    <div class="app-subject-line" md-line>
+                        <h3 class="app-member-username">Subecj</h3>
+                        <p class="app-subject-description">sdfavafd</p>
+
+                        <span class="app-fill-remaining"></span>
+
+                        <md-icon class="app-subject-action">message</md-icon>
+                        <span class="app-subject-comment-count">29</span>
+                    </div>
+                </md-list-item>
+                <md-list-item>
+                    <div class="app-subject-line app-subject-comment-line" md-line>
+                        <small class="app-subject-comment">sdfavafd -- dude</small>
+
+                        <span class="app-fill-remaining"></span>
+
+                        <small>34/55</small>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+        
+        <button class="app-add-subject-btn" md-fab>
+            <md-icon class="md-24">add</md-icon>
+        </button>
+
+    </div>
+</section>

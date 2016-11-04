@@ -9,15 +9,17 @@
                 
                 <img class="app-member-avatar"
                      md-list-avatar
-                     [src]="member.avatar || '/Shared/Assets/Images/UnknownPerson.png'"
-                     [alt]="member.email">
+                     [src]="member?.avatar || '/Shared/Assets/Images/UnknownPerson.png'"
+                     [alt]="member?.userName">
 
                 <div class="app-member-infos" md-line>
-                    <h3 class="app-member-username">{{ member.userName }}</h3>
+                    <h3 class="app-member-username">{{ member?.userName }}</h3>
 
                     <span class="app-fill-remaining"></span>
 
-                    <md-icon class="app-member-action">mode_edit</md-icon>
+                    <md-icon class="app-member-action"
+                             (click)="onMemberEdit(member)">mode_edit</md-icon>
+
                     <md-icon class="app-member-action">delete_forever</md-icon>
                 </div>
             </md-list-item>

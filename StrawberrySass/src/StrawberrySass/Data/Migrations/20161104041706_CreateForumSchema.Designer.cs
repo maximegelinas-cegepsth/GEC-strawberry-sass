@@ -8,9 +8,10 @@ using StrawberrySass.Data;
 namespace StrawberrySass.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161104041706_CreateForumSchema")]
+    partial class CreateForumSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -172,50 +173,6 @@ namespace StrawberrySass.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("StrawberrySass.Models.Forum.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("AuthorId");
-
-                    b.Property<string>("Message");
-
-                    b.Property<int?>("SubjectId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("StrawberrySass.Models.Forum.Subject", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("AuthorId");
-
-                    b.Property<string>("Content");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.ToTable("Subjects");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -251,24 +208,6 @@ namespace StrawberrySass.Data.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("StrawberrySass.Models.Forum.Comment", b =>
-                {
-                    b.HasOne("StrawberrySass.Models.ApplicationUser", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
-
-                    b.HasOne("StrawberrySass.Models.Forum.Subject")
-                        .WithMany("Comments")
-                        .HasForeignKey("SubjectId");
-                });
-
-            modelBuilder.Entity("StrawberrySass.Models.Forum.Subject", b =>
-                {
-                    b.HasOne("StrawberrySass.Models.ApplicationUser", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
                 });
         }
     }

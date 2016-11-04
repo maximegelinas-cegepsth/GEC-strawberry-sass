@@ -1,0 +1,41 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-checkbox',
+    $selector: '.app-body md-checkbox',
+    $declarations: (
+        'background-color': transparent,
+        'border-color': get-color('foreground'),
+        '!ckecked': (
+            'background-color': get-color('accent'),
+            )
+        )
+    ) {
+    @include dynamic {
+        .md-checkbox-frame {
+            color: get('border-color');
+        }
+        .md-checkbox-background,
+        .md-checkbox-checkmark {
+            background-color: get('background-color');
+        }
+        &.md-checkbox-checked {
+            .md-checkbox-background {
+                background-color: get('!ckecked:background-color');
+            }
+        }
+    }
+    @include static {
+        .md-checkbox-layout {
+            margin: 16px 0;
+        }
+        .md-checkbox-input {
+            visibility: hidden;
+        }
+    }
+}

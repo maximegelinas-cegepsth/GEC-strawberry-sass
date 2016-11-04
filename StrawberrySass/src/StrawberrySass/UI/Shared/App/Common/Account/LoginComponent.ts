@@ -54,14 +54,14 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        this._accountService.login(this.loginForm.value)
-            .subscribe(
+        this._accountService.login(this.loginForm.value).subscribe(
             () => {
                 this.dialogRef.close();
             },
             () => {
                 console.error('Login fail...');
-            });
+            }
+        );
     }
 
     buildForm(): void {

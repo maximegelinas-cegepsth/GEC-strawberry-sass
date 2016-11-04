@@ -8,7 +8,7 @@ export abstract class MemberService implements DataService<Member> {
 
     abstract add(data: Member): Observable<Member>;
 
-    abstract delete(key: string): void;
+    abstract delete(data: Member): Observable<boolean>;
 
     abstract get(key: string): Observable<Member>;
 

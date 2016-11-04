@@ -21,10 +21,15 @@
                       [class.error]="formErrors['password'] != ''">
                 <md-hint>{{ formErrors['password'] }}</md-hint>
             </md-input>
+            
+            <div class="app-confirm-section">
+                <button type="submit"
+                        md-button
+                        [disabled]="!registerForm.valid">
+                    Confirmer
+                </button>
+            </div>
 
-            <button type="submit"
-                    md-button
-                    [disabled]="!registerForm.valid">Confirmer</button>
         </form>
 
     </div>

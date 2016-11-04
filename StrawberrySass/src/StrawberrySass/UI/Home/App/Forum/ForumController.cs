@@ -5,6 +5,7 @@ namespace StrawberrySass.UI.Home.App.Forum
 {
     public class ForumController : Controller
     {
+        [HttpGet]
         [Route("templates/home/forum")]
         [Authorize(Roles = "Administrator,Moderator,Member")]
         public IActionResult ForumComponent() => PartialView("~/UI/Home/App/Forum/ForumComponent.cshtml");

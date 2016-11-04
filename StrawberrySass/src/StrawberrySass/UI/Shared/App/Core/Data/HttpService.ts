@@ -21,9 +21,13 @@ export abstract class HttpService<T extends Object> implements DataService<T> {
             .catch(this.handleError);
     }
 
-    delete(key: string): void { throw new Error('Not implemented'); }
+    delete(data: T): Observable<boolean> { throw new Error('Not implemented'); }
 
-    get(key: string): Observable<T> { throw new Error('Not implemented'); }
+    get(key: string): Observable<T> {
+        return this.http.get(`${this.apiUrl()}/${key}`)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     getAll(): Observable<T[]> {
         return this.http.get(this.apiUrl())

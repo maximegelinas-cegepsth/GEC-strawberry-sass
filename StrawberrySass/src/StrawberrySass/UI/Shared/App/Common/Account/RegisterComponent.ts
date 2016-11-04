@@ -7,8 +7,7 @@ import { AccountService } from './AccountService';
 @Component({
     moduleId: module.id,
     selector: 'app-register',
-    templateUrl: '/templates/shared/register',
-    styleUrls: ['RegisterComponent.css']
+    templateUrl: '/templates/shared/register'
 })
 export class RegisterComponent implements OnInit {
 
@@ -46,14 +45,14 @@ export class RegisterComponent implements OnInit {
     }
 
     onSubmit() {
-        this._accountService.register(this.registerForm.value)
-            .subscribe(
+        this._accountService.register(this.registerForm.value).subscribe(
             () => {
                 this._router.navigate(['/welcome']);
             },
             () => {
                 console.error('Registration fail...');
-            });
+            }
+        );
     }
 
     buildForm(): void {

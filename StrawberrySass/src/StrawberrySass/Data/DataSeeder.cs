@@ -5,16 +5,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using StrawberrySass.Models;
 using Microsoft.EntityFrameworkCore;
+using StrawberrySass.Models.Forum;
 
 namespace StrawberrySass.Data
 {
     public static class DataSeeder
     {
-        public static void SeedData(this IApplicationBuilder app)
+        public static async void SeedData(this IApplicationBuilder app)
         {
             var context = app.ApplicationServices.GetService(typeof(ApplicationDbContext)) as ApplicationDbContext;
             var roleManager = app.ApplicationServices.GetService(typeof(RoleManager<IdentityRole>)) as RoleManager<IdentityRole>;
             var userManager = app.ApplicationServices.GetService(typeof(UserManager<ApplicationUser>)) as UserManager<ApplicationUser>;
+
+            if (context == null || roleManager == null || userManager == null) return;
 
             SeedUserRoles(roleManager, new[]
             {
@@ -55,6 +58,25 @@ namespace StrawberrySass.Data
                     { "Role", "ForumBanned" }
                 }
             });
+
+            SeedForumSubjects(context, new[]
+            {
+                new Subject()
+                {
+                    Title = "Qu'est-ce que Strawberry?",
+                    Description = "Découvrez Strawberry et comment l'utiliser.",
+                    Author = (await userManager.Users.ToListAsync()).Single(u => u.UserName == "AdminUser"),
+                    Content = "À venir!",
+                    Comments = new[]
+                    {
+                        new Comment()
+                        {
+                            Author = (await userManager.Users.ToListAsync()).Single(u => u.UserName == "MemberUser"),
+                            Message = "J'ai très hate de lire ceci."
+                        }
+                    }
+                }
+            });            
         }
 
         private static async void SeedUserRoles(RoleManager<IdentityRole> roleManager, IEnumerable<string> roles)
@@ -77,6 +99,15 @@ namespace StrawberrySass.Data
                 await userManager.CreateAsync(newUser, user["Password"]);
                 await userManager.AddToRoleAsync(newUser, user["Role"]);
             }
+        }
+
+        private static async void SeedForumSubjects(ApplicationDbContext context, IEnumerable<Subject> subjects)
+        {
+            if (context.Subjects.Any()) return;
+
+            context.Subjects.AddRange(subjects);
+
+            await context.SaveChangesAsync();
         }
     }
 }

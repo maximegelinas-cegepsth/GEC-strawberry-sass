@@ -6,7 +6,7 @@
 @import 'Theme';
 
 @include new-component(
-    $name: 'app-about',
+    $name: 'app-members',
     $selector: ':host',
     $declarations: ('null':'null')
     ) {
