@@ -11,6 +11,8 @@ namespace StrawberrySass.Data
 
         public DbSet<Comment> Comments { get; set; }
 
+        public DbSet<AspNetUsersInfoSup> AspNetUsersInfoSup { get; set; }
+
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
             
