@@ -1,6 +1,7 @@
 ﻿import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
+import { ReactiveFormsModule }   from '@angular/forms';
 
 import { AccountModule } from './Account/AccountModule';
 
@@ -8,6 +9,7 @@ import { AccountModule } from './Account/AccountModule';
     imports: [
         NgCommonModule,
         MaterialModule.forRoot(),
+        ReactiveFormsModule,
 
         AccountModule
     ],
@@ -15,6 +17,7 @@ import { AccountModule } from './Account/AccountModule';
     exports: [
         NgCommonModule,
         MaterialModule,
+        ReactiveFormsModule,
 
         AccountModule
     ]

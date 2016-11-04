@@ -1,0 +1,59 @@
+﻿/// <reference path="../../../Shared/Assets/Styles/References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-forum-subject',
+    $selector: ':host',
+    $declarations: ('null':'null')
+    ) {
+    @include dynamic {
+
+    }
+    @include static {
+        .center-xs {
+            text-align: left;
+        }
+        .app-subject-header > * {
+            display: inline-block;
+            margin-left: 16px;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        md-input.app-subject-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            width: 30%;
+            & /deep/ {
+                .md-input-underline {
+                    margin-top: 2px;
+                }
+            }
+        }
+        md-input.app-subject-description {
+            margin-left: 0 !important;
+            width: 69.5%;
+            & /deep/ {
+                .md-input-underline {
+                    margin-top: 4px;
+                }
+            }
+        }
+        .app-subject-content {
+            border: 1px solid;
+            margin: 32px 0;
+            padding: 16px;
+        }
+        .app-subject-comment /deep/ > .md-list-item {
+            padding: 0;
+        }
+        .app-subject-author-avatar {
+            width: auto;
+        }
+    }
+}

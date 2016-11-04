@@ -6,7 +6,7 @@ import { MembersComponent } from './MembersComponent';
 
 const appRoutes: Routes = [
     { path: '', component: MembersComponent },
-    { path: ':key', component: MemberComponent }
+    { path: ':userName', component: MemberComponent }
 ];
 
 export const routing = RouterModule.forChild(appRoutes);

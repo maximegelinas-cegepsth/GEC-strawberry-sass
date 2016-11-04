@@ -6,6 +6,7 @@ import { ForumComponent } from './ForumComponent';
 import { routing } from './ForumRouting';
 import { SubjectService } from './SubjectService';
 import { HttpSubjectService } from './HttpSubjectService';
+import { SubjectComponent } from './SubjectComponent';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { HttpSubjectService } from './HttpSubjectService';
         routing
     ],
     declarations: [
-        ForumComponent
+        ForumComponent,
+        SubjectComponent
     ],
     providers: [{ provide: SubjectService, useClass: HttpSubjectService }]
 })

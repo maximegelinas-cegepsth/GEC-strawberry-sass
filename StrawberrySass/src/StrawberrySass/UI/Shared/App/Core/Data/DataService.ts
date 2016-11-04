@@ -4,7 +4,7 @@ export interface DataService<T extends Object> {
 
     add(data: T): Observable<T>;
 
-    delete(data: T): Observable<boolean>;
+    delete(key: string): Observable<boolean>;
 
     get(key: string): Observable<T>;
 

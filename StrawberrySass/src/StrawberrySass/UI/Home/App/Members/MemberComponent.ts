@@ -21,9 +21,9 @@ export class MemberComponent implements OnInit {
 
     ngOnInit(): void {
         this._route.params.forEach((params: Params) => {
-            const key = params['key'];
+            const userName = params['userName'];
 
-            this._memberService.get(key).subscribe(
+            this._memberService.get(userName).subscribe(
                 (member: Member) => this.member = member,
                 () => console.error('GET Member fail...')
             );

@@ -25,12 +25,16 @@ export class MembersComponent implements OnInit {
     }
 
     onMemberDelete(member: Member): void {
-        this._memberService.delete(member).subscribe(
-            () => { },
+        this._memberService.delete(member.userName).subscribe(
+            () => {
+                const index = this.members.indexOf(member);
+                if (index === -1) return;
+                this.members.splice(index, 1);
+
+                setTimeout(this.refreshMembers(), 100);
+            },
             () => console.error('DELETE member fail...')
         );
-
-        this.refreshMembers();
     }
 
     onMemberEdit(member: Member): void {

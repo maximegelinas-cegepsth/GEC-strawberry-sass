@@ -1,0 +1,63 @@
+﻿<h1 class="app-page-title">Forum</h1>
+
+<section class="row center-xs">
+    <div class="col-md-10">
+        
+        @*<form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">*@
+
+            <div class="app-subject-header"
+                 *ngIf="!editMode">
+                <h2>{{ subject?.title }}</h2>
+                <p>{{ subject?.description }}</p>
+            </div>
+
+            @*<div class="app-subject-header"
+                 [hidden]="!editMode">
+                <md-input type="text" class="app-subject-title"
+                          formControlName="title"
+                          [class.error]="formErrors['title'] != ''">
+                    <md-hint>{{ formErrors['title'] }}</md-hint>
+                </md-input>
+
+                <md-input class="app-subject-description"
+                          formControlName="description"
+                          [class.error]="formErrors['description'] != ''">
+                    <md-hint>{{ formErrors['description'] }}</md-hint>                    
+                </md-input>
+            </div>*@
+
+            <div class="app-subject-content">
+                <p *ngIf="!editMode">{{ subject?.content }}</p>
+
+                @*<md-textarea class="app-subject-title"
+                          formControlName="content"
+                          [hidden]="!editMode"
+                          [class.error]="formErrors['content'] != ''">
+                    <md-hint>{{ formErrors['content'] }}</md-hint>
+                </md-textarea>*@
+
+            </div>
+
+            <div class="app-subject-comments">
+                <md-list>
+                    <md-list-item class="app-subject-comment"
+                                  *ngFor="let comment of subject?.comments">
+
+                        <img class="app-subject-author-avatar"
+                             md-list-avatar
+                             [src]="subject?.author?.avatar || '/Shared/Assets/Images/UnknownPerson.png'"
+                             [alt]="subject?.author?.userName">
+
+                        <h3 md-line> {{ comment?.author?.userName }} </h3>
+                        <p md-line>
+                            <span> {{ comment?.addedDate | date:'short' }} -- {{ comment?.message }} </span>
+                        </p>
+
+                    </md-list-item>
+                </md-list>
+            </div>
+
+        @*</form>*@
+
+    </div>
+</section>

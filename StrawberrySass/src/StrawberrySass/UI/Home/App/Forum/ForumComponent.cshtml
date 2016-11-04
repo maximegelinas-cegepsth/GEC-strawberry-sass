@@ -4,8 +4,9 @@
     <div class="col-md-10">
         
         <div class="app-subject" *ngFor="let subject of subjects">
-            <div class="app-subject-date">{{ subject?.addedDate }}</div>
-            <md-list class="app-subject-box">
+            <div class="app-subject-date">{{ subject?.addedDate | date:'short' }}</div>
+            <md-list class="app-subject-box"
+                     (click)="onSubjectSee(subject)">
 
                 <md-list-item>
                     <img class="app-subject-author-avatar"
@@ -19,23 +20,25 @@
 
                         <span class="app-fill-remaining"></span>
 
-                        <md-icon class="app-subject-action">{{ subject?.comments?.count }}</md-icon>
-                        <span class="app-subject-comment-count">29</span>
+                        <md-icon class="app-subject-action">message</md-icon>
+                        <span class="app-subject-comment-count">{{ subject?.commentCount }}</span>
                     </div>
                 </md-list-item>
                 <md-list-item>
                     <div class="app-subject-line app-subject-comment-line" md-line>
-                        <small class="app-subject-comment">{{ subject?.comments?[0]?.message }} -- {{ subject?.comments?[0]?.author }}</small>
+                        <small class="app-subject-comment">{{ subject?.lastComment?.message }} -- {{ subject?.lastComment?.author?.userName }}</small>
 
                         <span class="app-fill-remaining"></span>
 
-                        <small>{{ subject?.comments?[0]?.addedDate }}</small>
+                        <small>{{ subject?.lastComment?.addedDate | date:'short' }}</small>
                     </div>
                 </md-list-item>
             </md-list>
         </div>
         
-        <button class="app-add-subject-btn" md-fab>
+        <button class="app-add-subject-btn" 
+                md-fab
+                (click)="onSubjectAdd()">
             <md-icon class="md-24">add</md-icon>
         </button>
 

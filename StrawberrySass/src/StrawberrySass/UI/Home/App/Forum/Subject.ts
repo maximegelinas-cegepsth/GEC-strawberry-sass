@@ -3,6 +3,8 @@ import { Member } from './Member';
 
 export class Subject {
 
+    id: number;
+
     title: string;
 
     description: string;
@@ -14,5 +16,9 @@ export class Subject {
     author: Member;
 
     comments: Comment[];
+
+    lastComment: Comment;
+
+    commentCount: number;
 
 }
