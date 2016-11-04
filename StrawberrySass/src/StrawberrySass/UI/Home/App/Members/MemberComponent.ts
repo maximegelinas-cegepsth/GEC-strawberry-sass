@@ -25,7 +25,7 @@ export class MemberComponent implements OnInit {
 
             this._memberService.get(key).subscribe(
                 (member: Member) => this.member = member,
-                () => console.log('GET Member fail...')
+                () => console.error('GET Member fail...')
             );
         });
     }
@@ -46,7 +46,7 @@ export class MemberComponent implements OnInit {
     onSubmit(): void {
         this._memberService.update(this.member).subscribe(
             () => this._router.navigate(['/members']),
-            () => console.log('UPDATE Member fail...')
+            () => console.error('UPDATE Member fail...')
         );
     }
 

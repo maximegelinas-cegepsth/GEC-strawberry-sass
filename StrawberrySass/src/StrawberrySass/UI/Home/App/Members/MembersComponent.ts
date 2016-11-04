@@ -27,7 +27,7 @@ export class MembersComponent implements OnInit {
     onMemberDelete(member: Member): void {
         this._memberService.delete(member).subscribe(
             () => { },
-            () => console.log('DELETE member fail...')
+            () => console.error('DELETE member fail...')
         );
 
         this.refreshMembers();

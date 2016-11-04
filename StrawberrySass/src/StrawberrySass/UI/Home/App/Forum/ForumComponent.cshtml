@@ -3,8 +3,8 @@
 <section class="row center-xs">
     <div class="col-md-10">
         
-        <div class="app-subject">
-            <div class="app-subject-date">34/34</div>
+        <div class="app-subject" *ngFor="let subject of subjects">
+            <div class="app-subject-date">{{ subject?.addedDate }}</div>
             <md-list class="app-subject-box">
 
                 <md-list-item>
@@ -14,22 +14,22 @@
                          [alt]="subject?.author?.userName">
 
                     <div class="app-subject-line" md-line>
-                        <h3 class="app-member-username">Subecj</h3>
-                        <p class="app-subject-description">sdfavafd</p>
+                        <h3 class="app-member-username">{{ subject?.title }}</h3>
+                        <p class="app-subject-description">{{ subject?.description }}</p>
 
                         <span class="app-fill-remaining"></span>
 
-                        <md-icon class="app-subject-action">message</md-icon>
+                        <md-icon class="app-subject-action">{{ subject?.comments?.count }}</md-icon>
                         <span class="app-subject-comment-count">29</span>
                     </div>
                 </md-list-item>
                 <md-list-item>
                     <div class="app-subject-line app-subject-comment-line" md-line>
-                        <small class="app-subject-comment">sdfavafd -- dude</small>
+                        <small class="app-subject-comment">{{ subject?.comments?[0]?.message }} -- {{ subject?.comments?[0]?.author }}</small>
 
                         <span class="app-fill-remaining"></span>
 
-                        <small>34/55</small>
+                        <small>{{ subject?.comments?[0]?.addedDate }}</small>
                     </div>
                 </md-list-item>
             </md-list>

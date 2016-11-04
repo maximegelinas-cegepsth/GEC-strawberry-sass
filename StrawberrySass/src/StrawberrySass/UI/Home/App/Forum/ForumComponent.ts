@@ -1,4 +1,7 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+
+import { Subject } from './Subject';
+import { SubjectService } from './SubjectService';
 
 @Component({
     moduleId: module.id,
@@ -6,4 +9,17 @@
     templateUrl: '/templates/home/forum',
     styleUrls: ['ForumComponent.css']
 })
-export class ForumComponent {}
+export class ForumComponent implements OnInit {
+
+    subjects: Subject[];
+
+    constructor(private _subjectsService: SubjectService) { }
+
+    ngOnInit(): void {
+        this._subjectsService.getAll().subscribe(
+            (subjects: Subject[]) => this.subjects = subjects,
+            () => console.error('GET Subjects fail...')
+        );
+    }
+
+}
