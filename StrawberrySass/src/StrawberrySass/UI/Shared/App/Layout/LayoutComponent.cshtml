@@ -22,16 +22,16 @@
                 mode="side">
 
         <md-nav-list class="app-nav">
-            <a class="app-nav-link" md-list-item routerLink="/welcome" routerLinkActive="active">Bienvenue</a>
-            <a class="app-nav-link" md-list-item routerLink="/about" routerLinkActive="active">À propos</a>
-            <a class="app-nav-link" md-list-item routerLink="/contact-us" routerLinkActive="active">Nous joindre</a>
+            <a class="app-nav-link" md-list-item routerLink="/welcome" routerLinkActive="active">@SharedLocalizer["Welcome"]</a>
+            <a class="app-nav-link" md-list-item routerLink="/about" routerLinkActive="active">@SharedLocalizer["About"]</a>
+            <a class="app-nav-link" md-list-item routerLink="/contact-us" routerLinkActive="active">@SharedLocalizer["ContactUs"]</a>
 
             <div *ngIf="showMembersLinks">
-                <a class="app-nav-link" md-list-item routerLink="/forum" routerLinkActive="active">Forum</a>
+                <a class="app-nav-link" md-list-item routerLink="/forum" routerLinkActive="active">@SharedLocalizer["Forum"]</a>
             </div>
 
             <div *ngIf="showAdminsLinks">
-                <a class="app-nav-link" md-list-item routerLink="/members" routerLinkActive="active">Membres</a>
+                <a class="app-nav-link" md-list-item routerLink="/members" routerLinkActive="active">@SharedLocalizer["Members"]</a>
             </div>
         </md-nav-list>
     </md-sidenav>

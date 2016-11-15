@@ -1,12 +1,14 @@
-﻿<h1 class="app-page-title">À propos</h1>
+﻿@inject IStringLocalizer<StrawberrySass.UI.Home.App.About.AboutController> AboutControllerLocalizer
+
+<h1 class="app-page-title">@SharedLocalizer["About"]</h1>
 
 <!-- == Description == -->
 <section class="row">
     <div class="col-xs-12">
 
-        <h2>Développer avec passion</h2>
-
-        <p>Strawberry est développer par une équipe passionnée qui ont à cœur la rigueur code et le travail bien fait.</p>
+        <h2>@AboutControllerLocalizer["BuiltWithPassion"]</h2>
+        
+        <p>@AboutControllerLocalizer["TeamMinding"]</p>
 
     </div>
 </section>
@@ -16,7 +18,7 @@
     <div class="col-md-10">
         <div class="box">
 
-            <h2>Contributeurs</h2>
+            <h2>@SharedLocalizer["Contributors"]</h2>
 
             <div class="app-contributors row">
 
@@ -28,11 +30,11 @@
                                 <img src="~/Shared/Assets/Images/UnknownPerson.png" alt="Vous?" class="app-contrivutor-photo" md-card-image>
 
                                 <md-card-content>
-                                    <md-card-title class="app-contributor-name">Recherché</md-card-title>
+                                    <md-card-title class="app-contributor-name">@SharedLocalizer["Researched"]</md-card-title>
                                 </md-card-content>
 
                                 <md-card-actions>
-                                    <button routerLink="/contact-us" md-button>APPLIQUER</button>
+                                    <button routerLink="/contact-us" md-button>@SharedLocalizer["Apply"]</button>
                                 </md-card-actions>
                             </md-card>
                         </div>

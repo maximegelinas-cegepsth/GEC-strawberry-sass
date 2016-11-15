@@ -8,7 +8,7 @@ export abstract class SubjectService implements DataService<Subject> {
 
     abstract add(data: Subject): Observable<Subject>;
 
-    abstract delete(data: Subject): Observable<boolean>;
+    abstract delete(key: string): Observable<boolean>;
 
     abstract get(key: string): Observable<Subject>;
 

@@ -1,7 +1,9 @@
-﻿<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+﻿@inject IStringLocalizer<StrawberrySass.UI.Shared.App.Common.Account.AccountController> AccountControllerLocalizer
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
     <div class="app-dialog-header">
-        <h1 class="app-dialog-title">Login</h1>
+        <h1 class="app-dialog-title">@SharedLocalizer["Login"]</h1>
 
         <span class="app-fill-remaining"></span>
 
@@ -11,16 +13,29 @@
 
     <div class="app-dialog-content">
 
-        <md-input type="text" placeholder="Nom d'usager"
+        <md-input type="text" placeholder="@SharedLocalizer["Username"]"
                   formControlName="userName"
-                  [class.error]="formErrors['userName'] != ''">
-            <md-hint>{{ formErrors['userName'] }}</md-hint>
+                  [class.error]="isControlErrors('userName')">
+            <md-hint>
+                <span *ngFor="let error of getControlErrors('userName')">
+                    {{ error == 'required' ? "@AccountControllerLocalizer["UsernameRequiredError"]" : '' }}
+                    {{ error == 'maxlength' ? "@AccountControllerLocalizer["UsernameMaxLengthError"]" : '' }}
+                    {{ error == 'minlength' ? "@AccountControllerLocalizer["UsernameMinLengthError"]" : '' }}
+                </span>
+            </md-hint>
         </md-input>
 
-        <md-input type="password" placeholder="Mot de passe"
+        <md-input type="password" placeholder="@SharedLocalizer["Password"]"
                   formControlName="password"
-                  [class.error]="formErrors['password'] != ''">
-            <md-hint>{{ formErrors['password'] }}</md-hint>
+                  [class.error]="isControlErrors('password')">
+            <md-hint>
+                <span *ngFor="let error of getControlErrors('password')">
+                    {{ error == 'required' ? "@AccountControllerLocalizer["PasswordRequiredError"]" : '' }}
+                    {{ error == 'maxlength' ? "@AccountControllerLocalizer["PasswordMaxLengthError"]" : '' }}
+                    {{ error == 'minlength' ? "@AccountControllerLocalizer["PasswordMinLengthError"]" : '' }}
+                    {{ error == 'pattern' ? "@AccountControllerLocalizer["PasswordPatternError"]" : '' }}
+                </span>
+            </md-hint>
         </md-input>
 
     </div>
@@ -29,14 +44,14 @@
         <button type="submit"
                 md-button
                 [disabled]="!loginForm.valid">
-            Se connecter
+            @SharedLocalizer["SignIn"]
         </button>
 
         <span class="app-fill-remaining"></span>
 
         <button md-button
                 routerLink="/account/register">
-            S'inscrire
+            @SharedLocalizer["SignUp"]
         </button>
     </div>
 

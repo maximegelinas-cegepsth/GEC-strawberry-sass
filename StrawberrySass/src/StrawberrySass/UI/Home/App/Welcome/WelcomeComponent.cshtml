@@ -1,4 +1,6 @@
-﻿<header class="app-header" [style.height]="headerHeight"
+﻿@inject IStringLocalizer<StrawberrySass.UI.Home.App.Welcome.WelcomeController> WelcomeControllerLocalizer
+
+<header class="app-header" [style.height]="headerHeight"
         (window:resize)="setHeaderHeight()">
 
     <div class="app-header-content">
@@ -12,20 +14,20 @@
         <div class="box">
 
             <section>
-                <h1>Créez des composants CSS<br /> qui s’adaptent au style de tous vos projets.</h1>
-                <p>Construit avec Sass, Strawberry est vous permettant de structurer, personnaliser et réutiliser votre CSS plus facilement et plus rapidement.</p>
+                <h1>@Html.Raw(WelcomeControllerLocalizer["StrawberryShortDescription"])</h1>
+                <p>@WelcomeControllerLocalizer["StrawberryLongDescription"]</p>
             </section>
 
             <section class="app-feature row">
                 <div class="col-md-3">
                     <div class="box">
-                        <img class="app-feature-img" src="~/Shared/Assets/Images/LightBulb.png" alt="Simple" />
+                        <img class="app-feature-img" src="~/Shared/Assets/Images/LightBulb.png" alt="@WelcomeControllerLocalizer["EasyToLearn"]" />
                     </div>
                 </div>
                 <div class="col-md-9">
                     <div class="app-feature-txt app-left box">
-                        <h3>Simple à apprendre</h3>
-                        <p>La simplicité et prioritaire et c’est pourquoi nous avons pensé Strawberry pour être facile à comprendre et facile à utiliser.</p>
+                        <h3>@WelcomeControllerLocalizer["EasyToLearn"]</h3>
+                        <p>@WelcomeControllerLocalizer["EasyToLearnExplanation"]</p>
                     </div>
                 </div>
             </section>
@@ -33,13 +35,13 @@
             <section class="app-feature row">
                 <div class="col-md-9">
                     <div class="app-feature-txt app-right box">
-                        <h3>Rapide et performant</h3>
-                        <p>Strawberry générera toujours uniquement le code CSS que vous avez besoin pour permettre à votre application d’être rapide et légère.</p>
+                        <h3>@WelcomeControllerLocalizer["FastAndEfficient"]</h3>
+                        <p>@WelcomeControllerLocalizer["FastAndEfficientExplanation"]</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="box">
-                        <img class="app-feature-img" src="~/Shared/Assets/Images/Speedometer.png" alt="Rapide"/>
+                        <img class="app-feature-img" src="~/Shared/Assets/Images/Speedometer.png" alt="@WelcomeControllerLocalizer["FastAndEfficient"]"/>
                     </div>
                 </div>
             </section>
@@ -52,8 +54,8 @@
                 </div>
                 <div class="col-md-9">
                     <div class="app-feature-txt app-left box">
-                        <h3>Construit pour durer</h3>
-                        <p>Construit avec le populaire langage Sass et pensé pour être compatible avec les dernières avancés du CSS, Strawberry est ici pour rester.</p>
+                        <h3>@WelcomeControllerLocalizer["BuiltToLast"]</h3>
+                        <p>@WelcomeControllerLocalizer["BuiltToLastExplanation"]</p>
                     </div>
                 </div>
             </section>

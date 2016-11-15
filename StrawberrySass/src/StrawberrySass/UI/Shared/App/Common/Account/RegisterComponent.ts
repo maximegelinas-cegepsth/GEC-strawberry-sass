@@ -23,27 +23,6 @@ export class RegisterComponent implements OnInit {
         this.buildForm();
     }
 
-    onValueChanged(data?: any) {
-        if (!this.registerForm) { return; }
-
-        const form = this.registerForm;
-
-        for (const field in this.formErrors) {
-
-            this.formErrors[field] = '';
-            const control = form.get(field);
-
-            if (control && control.dirty && !control.valid) {
-
-                const messages = this.validationMessages[field];
-
-                for (const key in control.errors) {
-                    this.formErrors[field] += messages[key] + ' ';
-                }
-            }
-        }
-    }
-
     onSubmit() {
         this._accountService.register(this.registerForm.value).subscribe(
             () => {
@@ -73,39 +52,28 @@ export class RegisterComponent implements OnInit {
             'password': [null,
                 [
                     Validators.required,
+                    Validators.maxLength(100),
                     Validators.minLength(8),
                     Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*]).*')
                 ]
             ]
         });
-
-        this.registerForm.valueChanges
-            .subscribe((data: any) => this.onValueChanged(data));
-
-        this.onValueChanged();
     }
 
-    formErrors = {
-        'email': '',
-        'userName': '',
-        'password': ''
-    };
+    getControlErrors(controlName: string): string[] {
+        const control = this.registerForm.get(controlName);
+        const errors: string[] = [];
 
-    validationMessages = {
-        'email': {
-            'required': 'L\'Adresse courriel obligatoire.',
-            'pattern': 'L\'Adresse courriel doit être valide.'
-        },
-        'userName': {
-            'required': 'Le nom d\'usager est obligatoire.',
-            'maxlength': 'Le nom d\'usager doit contenir au maximum 100 caractères.',
-            'minlength': 'Le nom d\'usager doit contenir au minimum 4 caractères.'
-        },
-        'password': {
-            'required': 'Le mot de passe est obligatoire.',
-            'minlength': 'Le mot de passe doit contenir au minimum 8 caractères.',
-            'pattern': 'Le mot de passe doit contenir au moins une mujuscule, un nombre et un caractère spécial.'
+        if (control && control.dirty && !control.valid) {
+            for (const key in control.errors)
+                errors.push(key);
         }
-    };
+
+        return errors;
+    }
+
+    isControlErrors(controlName: string): boolean {
+        return this.getControlErrors(controlName).length > 0;
+    }
 
 }

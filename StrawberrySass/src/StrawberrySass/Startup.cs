@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,9 +58,15 @@ namespace StrawberrySass
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            // == Localization ==
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             // == Mvc ==
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
             services.Configure<RazorViewEngineOptions>(options =>
             {
@@ -97,7 +105,28 @@ namespace StrawberrySass
 
             app.UseApplicationInsightsExceptionTelemetry();
 
+            // == Localization ==
+
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en"),
+                new CultureInfo("fr"),
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en"),
+                // Formatting numbers, dates, etc.
+                SupportedCultures = supportedCultures,
+                // UI strings that we have localized.
+                SupportedUICultures = supportedCultures
+            });
+
+            // == Static files ==
+
             app.UseStaticFiles();
+
+            // == Identity ==
 
             app.UseIdentity();
 
@@ -117,7 +146,7 @@ namespace StrawberrySass
                 routes.MapRoute(
                     name: "spa-fallback",
                     template: "{controller}/{*anyting}",
-                    defaults: new {action = "Index"});
+                    defaults: new { action = "Index" });
             });
         }
     }

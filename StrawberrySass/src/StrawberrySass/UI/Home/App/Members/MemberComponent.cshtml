@@ -1,4 +1,4 @@
-﻿<h1 class="app-page-title">Membre</h1>
+﻿<h1 class="app-page-title">@SharedLocalizer["Member"]</h1>
 
 <section class="row center-xs">
     <div class="col-md-10">
@@ -6,12 +6,12 @@
         @*<form>*@
 
             <md-input type="text"
-                      placeholder="Nom d'usager (désactivé)"
+                      placeholder="@SharedLocalizer["Username"] (@SharedLocalizer["Disabled"])"
                       disabled
                       [value]="member?.userName"></md-input>
 
             <md-input type="text"
-                      placeholder="Adresse courriel (désactivé)"
+                      placeholder="@SharedLocalizer["EmailAddress"] (@SharedLocalizer["Disabled"])"
                       disabled
                       [value]="member?.email"></md-input>
 
@@ -26,7 +26,7 @@
 
             <div class="app-confirm-section">
                 <button md-button
-                        (click)="onSubmit()">Confirmer</button>
+                        (click)="onSubmit()">@SharedLocalizer["Confirm"]</button>
             </div>
 
         @*</form>*@

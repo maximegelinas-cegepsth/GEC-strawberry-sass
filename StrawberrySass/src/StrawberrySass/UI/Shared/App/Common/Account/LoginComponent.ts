@@ -32,27 +32,6 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    onValueChanged(data?: any) {
-        if (!this.loginForm) { return; }
-
-        const form = this.loginForm;
-
-        for (const field in this.formErrors) {
-
-            this.formErrors[field] = '';
-            const control = form.get(field);
-
-            if (control && control.dirty && !control.valid) {
-
-                const messages = this.validationMessages[field];
-
-                for (const key in control.errors) {
-                    this.formErrors[field] += messages[key] + ' ';
-                }
-            }
-        }
-    }
-
     onSubmit() {
         this._accountService.login(this.loginForm.value).subscribe(
             () => {
@@ -82,29 +61,21 @@ export class LoginComponent implements OnInit {
                 ]
             ]
         });
-
-        this.loginForm.valueChanges
-            .subscribe((data: any) => this.onValueChanged(data));
-
-        this.onValueChanged();
     }
 
-    formErrors = {
-        'userName': '',
-        'password': ''
-    };
+    getControlErrors(controlName: string): string[] {
+        const control = this.loginForm.get(controlName);
+        const errors: string[] = [];
 
-    validationMessages = {
-        'userName': {
-            'required': 'Le nom d\'usager est obligatoire.',
-            'maxlength': 'Le nom d\'usager doit contenir au maximum 100 caractères.',
-            'minlength': 'Le nom d\'usager doit contenir au minimum 4 caractères.'
-        },
-        'password': {
-            'required': 'Le mot de passe est obligatoire.',
-            'maxlength': 'Le mot de passe doit contenir au maximum 100 caractères.',
-            'minlength': 'Le mot de passe doit contenir au minimum 6 caractères.',
-            'pattern': 'Le mot de passe doit contenir au moins une mujuscule, un nombre et un caractère spécial.'
+        if (control && control.dirty && !control.valid) {
+            for (const key in control.errors)
+                errors.push(key);
         }
-    };
+
+        return errors;
+    }
+
+    isControlErrors(controlName: string): boolean {
+        return this.getControlErrors(controlName).length > 0;
+    }
 }

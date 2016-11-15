@@ -1,32 +1,52 @@
-﻿<h1 class="app-page-title">Inscription</h1>
+﻿@inject IStringLocalizer<StrawberrySass.UI.Shared.App.Common.Account.AccountController> AccountControllerLocalizer
+
+<h1 class="app-page-title">@SharedLocalizer["Registration"]</h1>
 
 <section class="row center-xs">
     <div class="col-md-10">
         
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <md-input type="text" placeholder="Nom d'usager"
+            <md-input type="text" placeholder="@SharedLocalizer["Username"]"
                       formControlName="userName"
-                      [class.error]="formErrors['userName'] != ''">
-                <md-hint>{{ formErrors['userName'] }}</md-hint>
+                      [class.error]="isControlErrors('userName')">
+                <md-hint>
+                    <span *ngFor="let error of getControlErrors('userName')">
+                        {{ error == 'required' ? "@AccountControllerLocalizer["UsernameRequiredError"]" : '' }}
+                        {{ error == 'maxlength' ? "@AccountControllerLocalizer["UsernameMaxLengthError"]" : '' }}
+                        {{ error == 'minlength' ? "@AccountControllerLocalizer["UsernameMinLengthError"]" : '' }}
+                    </span>
+                </md-hint>
             </md-input>
 
-            <md-input type="email" placeholder="Adresse courriel"
+            <md-input type="email" placeholder="@SharedLocalizer["EmailAddress"]"
                       formControlName="email"
-                      [class.error]="formErrors['email'] != ''">
-                <md-hint>{{ formErrors['email'] }}</md-hint>
+                      [class.error]="isControlErrors('password')">
+                <md-hint>
+                    <span *ngFor="let error of getControlErrors('userName')">
+                        {{ error == 'required' ? "@AccountControllerLocalizer["EmailRequiredError"]" : '' }}
+                        {{ error == 'pattern' ? "@AccountControllerLocalizer["EmailPatternError"]" : '' }}
+                    </span>
+                </md-hint>
             </md-input>
 
-            <md-input type="password" placeholder="Mot de passe"
+            <md-input type="password" placeholder="@SharedLocalizer["Password"]"
                       formControlName="password"
-                      [class.error]="formErrors['password'] != ''">
-                <md-hint>{{ formErrors['password'] }}</md-hint>
+                      [class.error]="isControlErrors('password')">
+                <md-hint>
+                    <span *ngFor="let error of getControlErrors('password')">
+                        {{ error == 'required' ? "@AccountControllerLocalizer["PasswordRequiredError"]" : '' }}
+                        {{ error == 'maxlength' ? "@AccountControllerLocalizer["PasswordMaxLengthError"]" : '' }}
+                        {{ error == 'minlength' ? "@AccountControllerLocalizer["PasswordMinLengthError"]" : '' }}
+                        {{ error == 'pattern' ? "@AccountControllerLocalizer["PasswordPatternError"]" : '' }}
+                    </span>
+                </md-hint>
             </md-input>
             
             <div class="app-confirm-section">
                 <button type="submit"
                         md-button
                         [disabled]="!registerForm.valid">
-                    Confirmer
+                    @SharedLocalizer["Confirm"]
                 </button>
             </div>
 
