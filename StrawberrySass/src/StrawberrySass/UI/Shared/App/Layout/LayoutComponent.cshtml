@@ -8,7 +8,14 @@
 
     <span class="app-fill-remaining"></span>
 
-    <md-icon class="app-login-btn"
+    <md-icon class="app-lang-icon app-action-icon"
+             [md-menu-trigger-for]="langMenu">language</md-icon>
+
+    <md-menu class="app-lang-menu" #langMenu="mdMenu">
+        <button md-menu-item *ngFor="let culture of cultures" (click)="setCulture(culture?.code)">{{ culture?.name }}</button>
+    </md-menu>
+
+    <md-icon class="app-action-icon"
              *ngIf="showLoginBtn"
              (click)="openLoginDialog()">account_circle</md-icon>
 </md-toolbar>

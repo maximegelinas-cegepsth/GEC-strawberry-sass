@@ -1,12 +1,12 @@
 ﻿import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 
-import { AccountService, LoginComponent, RegisteredUser } from '../Common';
+import { AccountService, CultureService, CultureInfo, CultureRequest, LoginComponent, RegisteredUser } from '../Common';
 
 @Component({
     moduleId: module.id,
     selector: 'app-layout',
-    templateUrl: 'LayoutComponent.html',
+    templateUrl: '/templates/shared/layout',
     styleUrls: [
         'ToolbarComponent.css',
         'SidenavComponent.css',
@@ -14,6 +14,8 @@ import { AccountService, LoginComponent, RegisteredUser } from '../Common';
     ]
 })
 export class LayoutComponent implements OnInit {
+
+    cultures: CultureInfo[];
 
     loginDialogRef: MdDialogRef<LoginComponent>;
 
@@ -29,11 +31,17 @@ export class LayoutComponent implements OnInit {
     constructor(
         public loginDialog: MdDialog,
         public viewContainerRef: ViewContainerRef,
-        private _accountService: AccountService
+        private _accountService: AccountService,
+        private _cultureService: CultureService
     ) { }
 
     ngOnInit(): void {
         this._accountService.logged.subscribe((user: RegisteredUser) => this.onLoggedUser(user));
+
+        this._cultureService.getAll().subscribe(
+            (cultures: CultureInfo[]) => this.cultures = cultures,
+            () => console.error('GET Cultures fail...')
+        );
     }
 
     onLoggedUser(user: RegisteredUser): void {
@@ -58,6 +66,16 @@ export class LayoutComponent implements OnInit {
         this.loginDialogRef.afterClosed().subscribe(() => {
             this.loginDialogRef = null;
         });
+    }
+
+    setCulture(culture: string) {
+        this._cultureService.set({
+            culture: culture,
+            returnUrl: '/'
+        }).subscribe(
+            (success: boolean) => { if (success) window.location.href = '/' },
+            () => console.error('POST Culture fail...')
+        );
     }
 
 }

@@ -6,7 +6,9 @@ namespace StrawberrySass.UI.Shared.App.Layout
     {
         [HttpGet]
         [Route("templates/shared/layout")]
-        public IActionResult LayoutComponent() => PartialView("~/UI/Shared/App/Layout/LayoutComponent.cshtml");
-
+        public IActionResult LayoutComponent()
+        {
+            return PartialView("~/UI/Shared/App/Layout/LayoutComponent.cshtml");
+        }
     }
 }

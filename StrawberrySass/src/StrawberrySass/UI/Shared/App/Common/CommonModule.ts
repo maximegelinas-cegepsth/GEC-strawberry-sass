@@ -4,6 +4,7 @@ import { MaterialModule } from '@angular/material';
 import { ReactiveFormsModule }   from '@angular/forms';
 
 import { AccountModule } from './Account/AccountModule';
+import { CultureModule } from './Culture/CultureModule';
 
 @NgModule({
     imports: [
@@ -11,7 +12,8 @@ import { AccountModule } from './Account/AccountModule';
         MaterialModule.forRoot(),
         ReactiveFormsModule,
 
-        AccountModule
+        AccountModule,
+        CultureModule
     ],
     declarations: [],
     exports: [
@@ -19,7 +21,8 @@ import { AccountModule } from './Account/AccountModule';
         MaterialModule,
         ReactiveFormsModule,
 
-        AccountModule
+        AccountModule,
+        CultureModule
     ]
 })
 export class CommonModule { }

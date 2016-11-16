@@ -3,6 +3,7 @@
 @import './Common/CheckboxComponent';
 @import './Common/DialogComponent';
 @import './Common/InputComponent';
+@import './Common/MenuComponent';
 // == App ==
 @import './Common/BodyComponent';
 @import './Common/PageTitleComponent';
@@ -22,4 +23,9 @@ form {
 .app-confirm-section {
     margin: 16px 0;
     text-align: right;
+}
+
+.app-lang-menu {
+    position: relative;
+    top: -30px;
 }

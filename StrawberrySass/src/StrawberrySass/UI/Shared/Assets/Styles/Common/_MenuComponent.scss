@@ -1,0 +1,21 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-menu',
+    $selector: '.app-body .md-menu',
+    $declarations: (
+        'background-color': get-color('background')
+        )
+    ) {
+    @include dynamic {
+        background-color: get('background-color');
+    }
+    @include static {
+        border-radius: 2px;
+    }
+}

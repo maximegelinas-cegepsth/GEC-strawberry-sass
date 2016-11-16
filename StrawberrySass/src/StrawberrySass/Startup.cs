@@ -1,8 +1,6 @@
-﻿using System.Globalization;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -107,20 +105,7 @@ namespace StrawberrySass
 
             // == Localization ==
 
-            var supportedCultures = new[]
-            {
-                new CultureInfo("en"),
-                new CultureInfo("fr"),
-            };
-
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture("en"),
-                // Formatting numbers, dates, etc.
-                SupportedCultures = supportedCultures,
-                // UI strings that we have localized.
-                SupportedUICultures = supportedCultures
-            });
+            app.UseRequestLocalization(UIRequestLocalizationOptions.Instance);
 
             // == Static files ==
 

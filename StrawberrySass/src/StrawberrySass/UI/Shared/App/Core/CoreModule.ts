@@ -2,8 +2,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
-import { DataComponent } from './Data/DataComponent';
-
 @NgModule({
     imports: [CommonModule],
     declarations: [],
