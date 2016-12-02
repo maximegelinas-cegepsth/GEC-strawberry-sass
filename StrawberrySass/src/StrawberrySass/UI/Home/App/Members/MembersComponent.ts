@@ -33,7 +33,7 @@ export class MembersComponent implements OnInit {
 
                 setTimeout(this.refreshMembers(), 100);
             },
-            () => console.error('DELETE member fail...')
+            () => console.error('Member delete failed....')
         );
     }
 
@@ -44,7 +44,7 @@ export class MembersComponent implements OnInit {
     refreshMembers(): void {
         this._memberService.getAll().subscribe(
             (members: Member[]) => this.members = members,
-            () => console.error('GET Members fail...')
+            () => console.error('Members acquisition failed...')
         );
     }
 

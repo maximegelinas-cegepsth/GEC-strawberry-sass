@@ -129,6 +129,9 @@
   <data name="EasyToLearnExplanation" xml:space="preserve">
     <value>La simplicité est prioritaire et c’est pourquoi nous avons pensé Strawberry pour être facile à comprendre et facile à utiliser.</value>
   </data>
+  <data name="EnterEmailForNews" xml:space="preserve">
+    <value>Entrez votre courriel pour recevoir les nouvelles</value>
+  </data>
   <data name="FastAndEfficient" xml:space="preserve">
     <value>Rapide et performant</value>
   </data>

@@ -2,6 +2,7 @@
   "userSecretsId": "aspnet-StrawberrySass-1d086cc3-9d57-4ab8-a7e2-2c711891d614",
 
   "dependencies": {
+    "MailKit": "1.10.0",
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"
@@ -40,7 +41,7 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc":  {
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
     }

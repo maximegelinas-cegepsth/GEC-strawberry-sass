@@ -23,7 +23,7 @@ export class ForumComponent implements OnInit {
     ngOnInit(): void {
         this._subjectsService.getAll().subscribe(
             (subjects: Subject[]) => this.subjects = subjects,
-            () => console.error('GET Subjects fail...')
+            () => console.error('Subjects acquisition failed...')
         );
     }
 

@@ -1,6 +1,4 @@
-﻿@inject IStringLocalizer<StrawberrySass.UI.Shared.App.Common.Account.AccountController> AccountControllerLocalizer
-
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+﻿<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
     <div class="app-dialog-header">
         <h1 class="app-dialog-title">@SharedLocalizer["Login"]</h1>
@@ -18,9 +16,9 @@
                   [class.error]="isControlErrors('userName')">
             <md-hint>
                 <span *ngFor="let error of getControlErrors('userName')">
-                    {{ error == 'required' ? "@AccountControllerLocalizer["UsernameRequiredError"]" : '' }}
-                    {{ error == 'maxlength' ? "@AccountControllerLocalizer["UsernameMaxLengthError"]" : '' }}
-                    {{ error == 'minlength' ? "@AccountControllerLocalizer["UsernameMinLengthError"]" : '' }}
+                    {{ error == 'required' ? "@SharedLocalizer["UsernameRequiredError"]" : '' }}
+                    {{ error == 'maxlength' ? "@SharedLocalizer["UsernameMaxLengthError"]" : '' }}
+                    {{ error == 'minlength' ? "@SharedLocalizer["UsernameMinLengthError"]" : '' }}
                 </span>
             </md-hint>
         </md-input>
@@ -30,10 +28,10 @@
                   [class.error]="isControlErrors('password')">
             <md-hint>
                 <span *ngFor="let error of getControlErrors('password')">
-                    {{ error == 'required' ? "@AccountControllerLocalizer["PasswordRequiredError"]" : '' }}
-                    {{ error == 'maxlength' ? "@AccountControllerLocalizer["PasswordMaxLengthError"]" : '' }}
-                    {{ error == 'minlength' ? "@AccountControllerLocalizer["PasswordMinLengthError"]" : '' }}
-                    {{ error == 'pattern' ? "@AccountControllerLocalizer["PasswordPatternError"]" : '' }}
+                    {{ error == 'required' ? "@SharedLocalizer["PasswordRequiredError"]" : '' }}
+                    {{ error == 'maxlength' ? "@SharedLocalizer["PasswordMaxLengthError"]" : '' }}
+                    {{ error == 'minlength' ? "@SharedLocalizer["PasswordMinLengthError"]" : '' }}
+                    {{ error == 'pattern' ? "@SharedLocalizer["PasswordPatternError"]" : '' }}
                 </span>
             </md-hint>
         </md-input>

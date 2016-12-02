@@ -1,0 +1,21 @@
+﻿@inject IStringLocalizer<StrawberrySass.UI.Home.App.Welcome.WelcomeController> WelcomeControllerLocalizer
+
+<div *ngIf="visible">
+    <form [formGroup]="newsSubscriptionForm" (ngSubmit)="onSubmit()">
+
+        <div class="app-news-subscribtion-input-group">
+            <md-input class="app-news-subscribtion-input" type="text" placeholder="@WelcomeControllerLocalizer["EnterEmailForNews"]"
+                      formControlName="email"
+                      [class.error]="isControlErrors('email')">
+                <span md-hint *ngFor="let error of getControlErrors('email')">
+                    {{ error == 'required' ? "@SharedLocalizer["UsernameRequiredError"]" : '' }}
+                    {{ error == 'maxlength' ? "@SharedLocalizer["UsernameMaxLengthError"]" : '' }}
+                    {{ error == 'minlength' ? "@SharedLocalizer["UsernameMinLengthError"]" : '' }}
+                </span>
+            </md-input>
+
+            <button class="app-news-subscribtion-btn" md-raised-button>Subscribe</button>
+        </div>
+
+    </form>
+</div>

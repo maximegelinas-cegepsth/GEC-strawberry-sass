@@ -1,0 +1,36 @@
+﻿/// <reference path="../../../Assets/Styles/References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-news-subscription',
+    $selector: ':host',
+    $declarations: ('null':'null')
+    ) {
+    @include dynamic {
+        button.app-news-subscribtion-btn {
+            background-color: get-color('accent');
+            color: get-color('foreground', 'light');
+        }
+    }
+    @include static {
+        .app-news-subscribtion-input-group {
+            align-items: center;
+            display: flex;            
+            margin: 42px 0;
+            padding: 0 56px;
+        }
+        .app-news-subscribtion-input {
+            flex-grow: 4;
+            margin-bottom: 5px;
+            width: auto;
+        }
+        button.app-news-subscribtion-btn {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+    }
+}

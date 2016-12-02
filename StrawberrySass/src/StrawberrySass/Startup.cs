@@ -7,8 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StrawberrySass.Data;
 using StrawberrySass.Models;
-using StrawberrySass.Services;
 using Microsoft.AspNetCore.Mvc.Razor;
+using StrawberrySass.Services;
 using StrawberrySass.UI;
 
 namespace StrawberrySass
@@ -73,8 +73,7 @@ namespace StrawberrySass
 
             // == Messaging ==
 
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddTransient<IEmailSender, MessageService>();
         }
 
         /// <summary>
@@ -115,8 +114,9 @@ namespace StrawberrySass
 
             app.UseIdentity();
 
-            // == Initial datas ==
+            // == Database ==
 
+            app.ApplicationServices.GetService<ApplicationDbContext>().Database.Migrate();
             app.SeedData();
 
             // == Routes ==

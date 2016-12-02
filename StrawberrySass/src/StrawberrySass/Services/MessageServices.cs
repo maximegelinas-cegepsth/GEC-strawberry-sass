@@ -1,25 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace StrawberrySass.Services
 {
-    // This class is used by the application to send Email and SMS
-    // when you turn on two-factor authentication in ASP.NET Identity.
-    // For more details see this link http://go.microsoft.com/fwlink/?LinkID=532713
-    public class AuthMessageSender : IEmailSender, ISmsSender
+    public class MessageService : IEmailSender
     {
-        public Task SendEmailAsync(string email, string subject, string message)
+        public async Task SendEmailAsync(string email, string subject, string message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
-        }
+            var emailMessage = new MimeMessage();
 
-        public Task SendSmsAsync(string number, string message)
-        {
-            // Plug in your SMS service here to send a text message.
-            return Task.FromResult(0);
+            emailMessage.From.Add(new MailboxAddress("Strawberry Sass", "strawberrysass.info@gmail.com"));
+            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.Subject = subject;
+
+            var bodyBuilder = new BodyBuilder { HtmlBody = message };
+            emailMessage.Body = bodyBuilder.ToMessageBody();
+
+            using (var client = new SmtpClient())
+            {
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                await client.ConnectAsync("smtp.gmail.com", 587);
+
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                await client.AuthenticateAsync("strawberrysass.info@gmail.com", "Str=123!");
+
+                await client.SendAsync(emailMessage);
+                await client.DisconnectAsync(true);
+            }
         }
     }
 }

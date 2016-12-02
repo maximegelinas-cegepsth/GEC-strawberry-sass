@@ -43,7 +43,7 @@ export class SubjectComponent implements OnInit {
 
             this._subjectsService.get(id).subscribe(
                 (subject: Subject) => this.subject = subject,
-                () => console.error('GET Subject fail...')
+                () => console.error('Subject detail acquisition failed...')
             );
         });
     }

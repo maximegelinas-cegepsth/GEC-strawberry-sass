@@ -141,6 +141,12 @@
   <data name="EmailAddress" xml:space="preserve">
     <value>Email address</value>
   </data>
+  <data name="EmailPatternError" xml:space="preserve">
+    <value>The email address must be valid.</value>
+  </data>
+  <data name="EmailRequiredError" xml:space="preserve">
+    <value>The email address is required.</value>
+  </data>
   <data name="Forum" xml:space="preserve">
     <value>Forum</value>
   </data>
@@ -155,6 +161,18 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PasswordMaxLengthError" xml:space="preserve">
+    <value>The password must contain a maximum of 100 characters.</value>
+  </data>
+  <data name="PasswordMinLengthError" xml:space="preserve">
+    <value>The password must contain at least 6 characters.</value>
+  </data>
+  <data name="PasswordPatternError" xml:space="preserve">
+    <value>The password must contain at least one uppercase letter, a number, and a special character.</value>
+  </data>
+  <data name="PasswordRequiredError" xml:space="preserve">
+    <value>The password is required.</value>
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Registration</value>
@@ -173,6 +191,15 @@
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="UsernameMaxLengthError" xml:space="preserve">
+    <value>The username must contain a maximum of 100 characters.</value>
+  </data>
+  <data name="UsernameMinLengthError" xml:space="preserve">
+    <value>The username must contain at least 6 characters.</value>
+  </data>
+  <data name="UsernameRequiredError" xml:space="preserve">
+    <value>The username is required.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>

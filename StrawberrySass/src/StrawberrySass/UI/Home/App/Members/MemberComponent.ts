@@ -25,7 +25,7 @@ export class MemberComponent implements OnInit {
 
             this._memberService.get(userName).subscribe(
                 (member: Member) => this.member = member,
-                () => console.error('GET Member fail...')
+                () => console.error('Member acquisition failed...')
             );
         });
     }
@@ -46,7 +46,7 @@ export class MemberComponent implements OnInit {
     onSubmit(): void {
         this._memberService.update(this.member).subscribe(
             () => this._router.navigate(['/members']),
-            () => console.error('UPDATE Member fail...')
+            () => console.error('Member update failed...')
         );
     }
 
