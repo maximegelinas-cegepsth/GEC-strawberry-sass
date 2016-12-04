@@ -4,6 +4,8 @@
 @import './Common/DialogComponent';
 @import './Common/InputComponent';
 @import './Common/MenuComponent';
+// == PrimeNG ==
+@import './Common/TextEditorComponent';
 // == App ==
 @import './Common/BodyComponent';
 @import './Common/PageTitleComponent';
@@ -26,6 +28,8 @@ form {
 }
 
 .app-lang-menu {
+    background-color: get-color('background');
+    border-radius: 2px;
     position: relative;
     top: -30px;
 }

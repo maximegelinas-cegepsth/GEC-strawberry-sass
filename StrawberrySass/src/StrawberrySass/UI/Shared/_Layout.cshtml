@@ -7,11 +7,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://cdn.rawgit.com/strawberrysass/strawberry-branding/master/favicons/favicon.ico" type="image/x-icon">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
     <link href="~/Shared/Vendor/flexboxgrid/dist/flexboxgrid.min.css" rel="stylesheet">
+
+    <!-- == PrimeNG == -->
+    <link href="~/Shared/Vendor/primeng/resources/themes/bootstrap/theme.css" rel="stylesheet">
+    <link href="~/Shared/Vendor/primeng/resources/primeng.min.css" rel="stylesheet">
+    <link href="~/Shared/Assets/Styles/QuillTheme.css" rel="stylesheet">
+    
     <link href="~/Shared/Assets/Styles/Common.css" rel="stylesheet">
 
     @RenderSection("styles", required: false)
@@ -22,10 +28,16 @@
         @RenderBody()
     </app-layout>
 
+    <!-- == Angular polyfills == -->
     <script src="~/Shared/Vendor/zone.js/dist/zone.min.js"></script>
     <script src="~/Shared/Vendor/reflect-metadata/Reflect.js"></script>
     <script src="~/Shared/Vendor/systemjs/dist/system.src.js"></script>
+
+    <!-- == Angular material == -->
     <script src="~/Shared/Vendor/hammerjs/hammer.min.js"></script>
+
+    <!-- == PrimeNG == -->
+    <script src="https://cdn.quilljs.com/1.0.0-beta.3/quill.min.js"></script>
 
     @RenderSection("scripts", required: false)
 

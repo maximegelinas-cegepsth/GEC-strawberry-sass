@@ -8,8 +8,8 @@ using StrawberrySass.Data;
 namespace StrawberrySass.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161104041706_CreateForumSchema")]
-    partial class CreateForumSchema
+    [Migration("20161202193328_CreateNewsletterSchema")]
+    partial class CreateNewsletterSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -130,6 +130,8 @@ namespace StrawberrySass.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<int?>("AdditionalInfosId");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -163,6 +165,8 @@ namespace StrawberrySass.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdditionalInfosId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -171,6 +175,74 @@ namespace StrawberrySass.Data.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("StrawberrySass.Models.AspNetUsersInfoSup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Avatar");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AspNetUsersInfoSup");
+                });
+
+            modelBuilder.Entity("StrawberrySass.Models.Forum.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<string>("Message");
+
+                    b.Property<int?>("SubjectId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("StrawberrySass.Models.Forum.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<string>("Content");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Subjects");
+                });
+
+            modelBuilder.Entity("StrawberrySass.Models.Newsletter.Subscriber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -208,6 +280,31 @@ namespace StrawberrySass.Data.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("StrawberrySass.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("StrawberrySass.Models.AspNetUsersInfoSup", "AdditionalInfos")
+                        .WithMany()
+                        .HasForeignKey("AdditionalInfosId");
+                });
+
+            modelBuilder.Entity("StrawberrySass.Models.Forum.Comment", b =>
+                {
+                    b.HasOne("StrawberrySass.Models.ApplicationUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("StrawberrySass.Models.Forum.Subject")
+                        .WithMany("Comments")
+                        .HasForeignKey("SubjectId");
+                });
+
+            modelBuilder.Entity("StrawberrySass.Models.Forum.Subject", b =>
+                {
+                    b.HasOne("StrawberrySass.Models.ApplicationUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
                 });
         }
     }

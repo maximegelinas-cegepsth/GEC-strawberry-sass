@@ -180,6 +180,12 @@
   <data name="Researched" xml:space="preserve">
     <value>Researched</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>Sending email</value>
+  </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign in</value>
   </data>

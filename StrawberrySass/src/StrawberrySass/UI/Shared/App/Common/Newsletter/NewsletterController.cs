@@ -1,18 +1,59 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using StrawberrySass.Data;
+using StrawberrySass.Models.Newsletter;
+using StrawberrySass.Services;
 
 namespace StrawberrySass.UI.Shared.App.Common.Newsletter
 {
     public class NewsletterController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        private readonly IEmailSender _emailSender;
+
+        public NewsletterController(ApplicationDbContext context, IEmailSender emailSender)
+        {
+            _context = context;
+            _emailSender = emailSender;
+        }
+
         [HttpGet]
         [Route("templates/shared/news-subscription")]
         public IActionResult NewsSubscriptionComponent() => PartialView("~/UI/Shared/App/Common/Newsletter/NewsSubscriptionComponent.cshtml");
 
+        [HttpGet]
+        [Route("templates/shared/letter-editor")]
+        public IActionResult LetterEditorComponent() => PartialView("~/UI/Shared/App/Common/Newsletter/LetterEditorComponent.cshtml");
+
         [HttpPost]
         [Route("api/newsletter/subscribers")]
-        public IActionResult AddSubscriber([FromBody] object model)
+        public IActionResult AddSubscriber([FromBody] SubscriberViewModel model)
         {
-            return Json(true);
+            if (!ModelState.IsValid || _context.Subscribers.Any(s => s.Email == model.Email)) return BadRequest();
+
+            var subscriber = new Subscriber()
+            {
+                Email = model.Email
+            };
+
+            _context.Subscribers.Add(subscriber);
+            _context.SaveChanges();
+
+            return Json(subscriber);
+        }
+
+        [HttpPost]
+        [Route("api/newsletter/letters")]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult SendLetter([FromBody] LetterViewModel model)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            foreach (var subscriber in _context.Subscribers.ToList())
+                _emailSender.SendEmailAsync(subscriber.Email, "Strawberry Sass", model.Body);
+
+            return Json(model);
         }
     }
 }

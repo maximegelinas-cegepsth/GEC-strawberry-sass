@@ -9,6 +9,7 @@
         'app': 'App',
         '@angular': 'vendor:@angular',
         '@angular2-material': 'vendor:@angular2-material',
+        'primeng': 'vendor:primeng',
         'rxjs': 'vendor:rxjs'
     };
 

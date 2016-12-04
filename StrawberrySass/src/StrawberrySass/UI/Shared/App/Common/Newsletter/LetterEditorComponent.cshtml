@@ -1,0 +1,12 @@
+﻿<h1 class="app-page-title">@SharedLocalizer["SendingEmail"]</h1>
+
+<p-editor class="app-editor" [style]="{'height':'500px'}" [(ngModel)]="letter.body"></p-editor>
+
+<div class="app-confirm-section">
+    <button md-button
+            [disabled]="!isValid()"
+            [class.disabled]="!isValid()"
+            (click)="onSend()">
+        @SharedLocalizer["Send"]
+    </button>
+</div>

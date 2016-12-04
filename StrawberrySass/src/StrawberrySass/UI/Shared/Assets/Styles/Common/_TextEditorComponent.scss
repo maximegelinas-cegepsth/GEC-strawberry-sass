@@ -1,0 +1,19 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'text-editor',
+    $selector: '.app-body .ql-toolbar.ql-snow',
+    $declarations: ('null':'null')
+    ) {
+    @include dynamic { }
+    @include static {
+        button {
+            background-color: transparent;
+        }    
+    }
+}
