@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
-import { HttpService } from '../../Core';
+import { HttpService } from '../../../Shared/App/Core';
 
 import { Letter } from './Letter';
 import { LetterService } from './LetterService';

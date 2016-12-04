@@ -19,11 +19,9 @@ export class LayoutComponent implements OnInit {
 
     loginDialogRef: MdDialogRef<LoginComponent>;
 
-    showLoginBtn = true;
+    userLogged = false;
 
-    showMembersLinks = false;
-
-    showAdminsLinks = false;
+    userRole: 'member' | 'admin';
 
     // TODO(maximegelinas): Gets the toolbar height dynamically.
     toolbarHeight = '64px';
@@ -46,13 +44,13 @@ export class LayoutComponent implements OnInit {
 
     onLoggedUser(user: RegisteredUser): void {
         if (!user) return;
-        this.showLoginBtn = false;
+        this.userLogged = true;
 
         if (!user.roles && user.roles.find(r => r === 'ForumBanned')) return;
-        this.showMembersLinks = true;
+        this.userRole = 'member';
 
         if (user.roles.find(r => r !== 'Administrator')) return;
-        this.showAdminsLinks = true;
+        this.userRole = 'admin';
     }
 
     openLoginDialog(): void {

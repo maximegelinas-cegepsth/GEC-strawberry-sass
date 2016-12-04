@@ -1,6 +1,6 @@
 ﻿import { Observable } from 'rxjs/Observable';
 
-import { DataService } from '../../Core';
+import { DataService } from '../../../Shared/App/Core';
 
 import { Letter } from './Letter';
 

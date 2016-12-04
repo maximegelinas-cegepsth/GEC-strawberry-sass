@@ -8,6 +8,7 @@ const appRoutes: Routes = [
     { path: 'contact-us', loadChildren: 'App/ContactUs/ContactUsModule#ContactUsModule' },
     { path: 'members', loadChildren: 'App/Members/MembersModule#MembersModule' },
     { path: 'forum', loadChildren: 'App/Forum/ForumModule#ForumModule' },
+    { path: 'newsletter', loadChildren: 'App/Newsletter/NewsletterModule#NewsletterModule' },
     { path: '**', redirectTo: '/welcome', pathMatch: 'full' }
 ];
 

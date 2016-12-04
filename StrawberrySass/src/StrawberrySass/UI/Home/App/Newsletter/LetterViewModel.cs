@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StrawberrySass.UI.Shared.App.Common.Newsletter
+namespace StrawberrySass.UI.Home.App.Newsletter
 {
     public class LetterViewModel
     {

@@ -16,7 +16,11 @@
     </md-menu>
 
     <md-icon class="app-action-icon"
-             *ngIf="showLoginBtn"
+             *ngIf="!userLogged"
+             (click)="openLoginDialog()">account_circle</md-icon>
+    
+    <md-icon class="app-action-icon"
+             *ngIf="userLogged"
              (click)="openLoginDialog()">account_circle</md-icon>
 </md-toolbar>
 
@@ -33,11 +37,11 @@
             <a class="app-nav-link" md-list-item routerLink="/about" routerLinkActive="active">@SharedLocalizer["About"]</a>
             <a class="app-nav-link" md-list-item routerLink="/contact-us" routerLinkActive="active">@SharedLocalizer["ContactUs"]</a>
 
-            <div *ngIf="showMembersLinks">
+            <div *ngIf="userRole == 'member'">
                 <a class="app-nav-link" md-list-item routerLink="/forum" routerLinkActive="active">@SharedLocalizer["Forum"]</a>
             </div>
 
-            <div *ngIf="showAdminsLinks">
+            <div *ngIf="userRole == 'admin'">
                 <a class="app-nav-link" md-list-item routerLink="/members" routerLinkActive="active">@SharedLocalizer["Members"]</a>
                 <a class="app-nav-link" md-list-item routerLink="/newsletter/editor" routerLinkActive="active">@SharedLocalizer["SendingEmail"]</a>
             </div>

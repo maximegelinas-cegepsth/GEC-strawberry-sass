@@ -7,7 +7,7 @@ import { LetterService } from './LetterService';
 @Component({
     moduleId: module.id,
     selector: 'app-letter-editor',
-    templateUrl: '/templates/shared/letter-editor'
+    templateUrl: '/templates/home/letter-editor'
 })
 export class LetterEditorComponent {
 

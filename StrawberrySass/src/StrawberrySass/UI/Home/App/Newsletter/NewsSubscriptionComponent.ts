@@ -7,7 +7,7 @@ import { SubscriberService } from './SubscriberService';
 @Component({
     moduleId: module.id,
     selector: 'app-news-subscription',
-    templateUrl: '/templates/shared/news-subscription',
+    templateUrl: '/templates/home/news-subscription',
     styleUrls: ['NewsSubscriptionComponent.css']
 })
 export class NewsSubscriptionComponent implements OnInit {

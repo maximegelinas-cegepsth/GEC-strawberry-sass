@@ -5,7 +5,7 @@ using StrawberrySass.Data;
 using StrawberrySass.Models.Newsletter;
 using StrawberrySass.Services;
 
-namespace StrawberrySass.UI.Shared.App.Common.Newsletter
+namespace StrawberrySass.UI.Home.App.Newsletter
 {
     public class NewsletterController : Controller
     {
@@ -19,12 +19,12 @@ namespace StrawberrySass.UI.Shared.App.Common.Newsletter
         }
 
         [HttpGet]
-        [Route("templates/shared/news-subscription")]
-        public IActionResult NewsSubscriptionComponent() => PartialView("~/UI/Shared/App/Common/Newsletter/NewsSubscriptionComponent.cshtml");
+        [Route("templates/home/news-subscription")]
+        public IActionResult NewsSubscriptionComponent() => PartialView("~/UI/Home/App/Newsletter/NewsSubscriptionComponent.cshtml");
 
         [HttpGet]
-        [Route("templates/shared/letter-editor")]
-        public IActionResult LetterEditorComponent() => PartialView("~/UI/Shared/App/Common/Newsletter/LetterEditorComponent.cshtml");
+        [Route("templates/home/letter-editor")]
+        public IActionResult LetterEditorComponent() => PartialView("~/UI/Home/App/Newsletter/LetterEditorComponent.cshtml");
 
         [HttpPost]
         [Route("api/newsletter/subscribers")]

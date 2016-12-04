@@ -1,11 +1,9 @@
 ﻿import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule }   from '@angular/forms';
 
 import {EditorModule, SharedModule} from 'primeng/primeng';
 
-import { CoreModule } from '../../Core';
+import { CommonModule } from '../../../Shared/App/Common';
 
 import { HttpLetterService } from './HttpLetterService';
 import { HttpSubscriberService } from './HttpSubscriberService';
@@ -17,15 +15,12 @@ import { SubscriberService } from './SubscriberService';
 
 @NgModule({
     imports: [
-        CommonModule,
-        MaterialModule.forRoot(),
         FormsModule,
-        ReactiveFormsModule,
+
+        CommonModule,
 
         EditorModule,
         SharedModule,
-
-        CoreModule.forRoot(),
 
         routing
     ],
