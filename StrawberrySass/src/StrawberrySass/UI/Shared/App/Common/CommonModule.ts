@@ -5,15 +5,18 @@ import { ReactiveFormsModule }   from '@angular/forms';
 
 import { AccountModule } from './Account/AccountModule';
 import { CultureModule } from './Culture/CultureModule';
+import { SurveysModule } from './Surveys/SurveysModule';
+
 
 @NgModule({
     imports: [
         NgCommonModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
         ReactiveFormsModule,
 
         AccountModule,
-        CultureModule
+        CultureModule,
+        SurveysModule
     ],
     declarations: [],
     exports: [
@@ -22,7 +25,8 @@ import { CultureModule } from './Culture/CultureModule';
         ReactiveFormsModule,
 
         AccountModule,
-        CultureModule
+        CultureModule,
+        SurveysModule
     ]
 })
 export class CommonModule { }

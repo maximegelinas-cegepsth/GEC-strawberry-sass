@@ -16,9 +16,7 @@ import { routing } from './AppRouting';
 
         routing
     ],
-    declarations: [
-        LayoutComponent,
-    ],
+    declarations: [LayoutComponent],
     bootstrap: [LayoutComponent]
 })
 export class AppModule { }

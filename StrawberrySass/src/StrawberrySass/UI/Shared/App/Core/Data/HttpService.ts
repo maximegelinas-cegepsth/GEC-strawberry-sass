@@ -1,5 +1,4 @@
-﻿import { Inject, ReflectiveInjector } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
+﻿import { Headers, Http, RequestOptions, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';

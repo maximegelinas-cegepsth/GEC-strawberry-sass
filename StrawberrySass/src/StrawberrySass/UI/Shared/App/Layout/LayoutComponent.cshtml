@@ -19,9 +19,10 @@
              *ngIf="!userLogged"
              (click)="openLoginDialog()">account_circle</md-icon>
     
-    <md-icon class="app-action-icon"
-             *ngIf="userLogged"
-             (click)="openLoginDialog()">account_circle</md-icon>
+    <md-icon class="app-notification-icon app-action-icon"
+             *ngIf="!userLogged"
+             [class.app-active]="hasUnreadNotification"
+             (click)="openNotificationsDialog()">notifications_active</md-icon>
 </md-toolbar>
 
 <md-sidenav-layout fullscreen

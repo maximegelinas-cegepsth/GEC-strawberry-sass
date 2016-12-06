@@ -2,9 +2,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
+import { NotificationService } from './NotificationService';
+
 @NgModule({
     imports: [CommonModule],
     declarations: [],
+    providers: [NotificationService],
     exports: [HttpModule]
 })
 export class CoreModule {

@@ -14,6 +14,23 @@
         'color': get-color('foreground', 'light')
         )
     ) {
+    @keyframes shake {
+      1%, 9% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      2%, 8% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      3%, 5%, 7% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      4%, 6% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
     @include dynamic {
         .app-toolbar {
             background-color: get('background-color');
@@ -37,6 +54,18 @@
             .app-action-icon {
                 cursor: pointer;
                 margin-left: 20px;
+            }
+            .app-notification-icon {
+                &.app-active {
+                    animation-name: shake;
+                    animation-duration: 10s;
+                    animation-fill-mode: both;
+                    animation-timing-function: cubic-bezier(.36,.07,.19,.97);
+                    animation-iteration-count: infinite;
+                    perspective: 1000px;
+                    backface-visibility: hidden;
+                    transform: translate3d(0, 0, 0);
+                } 
             }
             .app-lang-icon {
                 text-align: right;
