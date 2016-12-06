@@ -13,7 +13,11 @@ namespace StrawberrySass.UI.Shared.App.Common.Culture
         [Route("api/cultures")]
         public IActionResult GetAll()
         {
-            var cultures = UIRequestLocalizationOptions.Instance.SupportedUICultures
+            var cultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("fr")
+                }
                 .Select(c => new CultureInfoViewModel()
                 {
                     Code = c.Name,

@@ -1,0 +1,31 @@
+﻿@inject IStringLocalizer<StrawberrySass.UI.Shared.App.Common.Surveys.SurveysController> SurveysControllerLocalizer
+
+<form [formGroup]="" (ngSubmit)="onSubmit()">
+
+    <div class="app-dialog-header">
+        <h1 class="app-dialog-title">@SharedLocalizer["Survey"]</h1>
+
+        <span class="app-fill-remaining"></span>
+
+        <md-icon class="app-dialog-close-btn"
+                 (click)="dialogRef.close()">close</md-icon>
+    </div>
+
+    <div class="app-dialog-content">
+        <h3>@SurveysControllerLocalizer["Question1"]</h3>
+
+        <md-textarea #answer></md-textarea>
+        {{ answer.value }}
+    </div>
+
+    <div class="app-dialog-footer">
+        <span class="app-fill-remaining"></span>
+
+        <button type="submit"
+                md-button
+                [disabled]="false">
+            @SharedLocalizer["Send"]
+        </button>
+    </div>
+
+</form>

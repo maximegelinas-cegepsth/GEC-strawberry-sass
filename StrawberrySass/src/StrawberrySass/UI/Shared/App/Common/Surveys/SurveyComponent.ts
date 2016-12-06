@@ -5,7 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 @Component({
     moduleId: module.id,
     selector: 'app-survey',
-    templateUrl: 'SurveyComponent.html'
+    templateUrl: '/templates/shared/survey'
 })
 export class SurveyComponent implements OnInit {
 
@@ -20,6 +20,10 @@ export class SurveyComponent implements OnInit {
 
             this.dialogRef.close();
         });
+    }
+
+    onSubmit() {
+        this.dialogRef.close();
     }
 
 }

@@ -20,7 +20,7 @@
              (click)="openLoginDialog()">account_circle</md-icon>
     
     <md-icon class="app-notification-icon app-action-icon"
-             *ngIf="!userLogged"
+             *ngIf="userLogged && hasUnreadNotification"
              [class.app-active]="hasUnreadNotification"
              (click)="openNotificationsDialog()">notifications_active</md-icon>
 </md-toolbar>
@@ -38,7 +38,7 @@
             <a class="app-nav-link" md-list-item routerLink="/about" routerLinkActive="active">@SharedLocalizer["About"]</a>
             <a class="app-nav-link" md-list-item routerLink="/contact-us" routerLinkActive="active">@SharedLocalizer["ContactUs"]</a>
 
-            <div *ngIf="userRole == 'member'">
+            <div *ngIf="userRole == 'member' || userRole == 'admin'">
                 <a class="app-nav-link" md-list-item routerLink="/forum" routerLinkActive="active">@SharedLocalizer["Forum"]</a>
             </div>
 

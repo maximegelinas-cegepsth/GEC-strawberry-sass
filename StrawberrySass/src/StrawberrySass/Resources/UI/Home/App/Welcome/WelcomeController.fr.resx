@@ -139,7 +139,9 @@
     <value>Strawberry générera toujours uniquement le code CSS que vous avez besoin pour permettre à votre application d’être rapide et légère.</value>
   </data>
   <data name="StrawberryLongDescription" xml:space="preserve">
-    <value>Construit avec Sass, Strawberry est vous permettant de structurer, personnaliser et réutiliser votre&lt;br /&gt;CSS plus facilement et plus rapidement.</value>
+    <value>Construit avec Sass, Strawberry est vous permettant de structurer, personnaliser et réutiliser 
+votre CSS 
+plus facilement et plus rapidement.</value>
   </data>
   <data name="StrawberryShortDescription" xml:space="preserve">
     <value>Créez des composants CSS

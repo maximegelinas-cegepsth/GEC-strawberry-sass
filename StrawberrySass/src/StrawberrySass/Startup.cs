@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using StrawberrySass.Data;
 using StrawberrySass.Models;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
 using StrawberrySass.Services;
 using StrawberrySass.UI;
 
@@ -41,6 +43,10 @@ namespace StrawberrySass
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // == Localization (1/2) ==
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             // == Telemetry ==
 
             services.AddApplicationInsightsTelemetry(Configuration);
@@ -56,15 +62,25 @@ namespace StrawberrySass
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            // == Localization ==
-
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
-
             // == Mvc ==
 
             services.AddMvc()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
+
+            // == Localization (2/2) ==
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("fr")
+                };
+
+                options.SupportedUICultures = supportedCultures;
+                options.SupportedCultures = supportedCultures;
+            });
 
             services.Configure<RazorViewEngineOptions>(options =>
             {
@@ -84,10 +100,21 @@ namespace StrawberrySass
         /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // == Loggers ==
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            // == Localization ==
+
+            var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(localizationOptions.Value);
+
+            // == Telemetry (1/2) ==
+
             app.UseApplicationInsightsRequestTelemetry();
+
+            // == Exceptions ==
 
             if (env.IsDevelopment())
             {
@@ -100,11 +127,9 @@ namespace StrawberrySass
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            // == Telemetry (2/2) ==
+
             app.UseApplicationInsightsExceptionTelemetry();
-
-            // == Localization ==
-
-            app.UseRequestLocalization(UIRequestLocalizationOptions.Instance);
 
             // == Static files ==
 

@@ -1,0 +1,25 @@
+﻿/// <reference path="../References" />
+
+
+@import 'strawberry/core';
+
+@import 'Theme';
+
+@include new-component(
+    $name: 'app-textarea',
+    $selector: '.app-body md-textarea',
+    $declarations: ('null':'null')
+    ) {
+    @include dynamic {
+        .md-input-underline {
+            color: get-color('accent');
+        }
+    }
+    @include static {
+        width: 100%;
+        .md-input-element {
+            max-height: 300px;
+            resize: none;
+        }
+    }
+}
